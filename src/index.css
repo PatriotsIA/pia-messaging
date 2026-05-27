@@ -1,0 +1,116 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-patriot-bg: #ffffff;
+  --color-patriot-bg-soft: #f5f7fe;
+  --color-patriot-bg-warm: #f7f4f0;
+  --color-patriot-border: #d4d8e9;
+  --color-patriot-text: #363636;
+  --color-patriot-muted: #5b6475;
+  --color-patriot-navy: #1b2673;
+  --color-patriot-blue: #6094e1;
+  --color-patriot-blue-dark: #1b2673;
+  --color-patriot-red: #be1e2d;
+  --color-patriot-red-dark: #8a0f18;
+  --color-patriot-white: #ffffff;
+
+  --font-display: Outfit, ui-sans-serif, system-ui, sans-serif;
+  --font-sans: Outfit, ui-sans-serif, system-ui, sans-serif;
+
+  --shadow-glow-red: 0 0 0 1px rgba(190, 30, 45, 0.25), 0 14px 44px rgba(190, 30, 45, 0.1);
+  --shadow-glow-blue: 0 0 0 1px rgba(96, 148, 225, 0.25), 0 14px 44px rgba(96, 148, 225, 0.12);
+  --shadow-card: 0 18px 60px rgba(27, 38, 115, 0.1);
+}
+
+@layer base {
+  :root {
+    color-scheme: light;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  html,
+  body {
+    height: 100%;
+  }
+
+  body {
+    margin: 0;
+    font-family: var(--font-sans);
+    background: var(--color-patriot-bg-soft);
+    color: var(--color-patriot-text);
+  }
+
+  ::selection {
+    background: rgba(96, 148, 225, 0.28);
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  :focus-visible {
+    outline: none;
+  }
+}
+
+@layer components {
+  .page-shell {
+    @apply relative min-h-dvh overflow-x-hidden;
+    background: linear-gradient(
+      180deg,
+      var(--color-patriot-bg-soft) 0%,
+      var(--color-patriot-bg) 52%,
+      var(--color-patriot-bg-warm) 110%
+    );
+    background-image: radial-gradient(
+      120% 95% at 50% 0%,
+      rgba(96, 148, 225, 0.22) 0%,
+      rgba(190, 30, 45, 0.1) 40%,
+      rgba(245, 247, 254, 0) 72%
+    );
+  }
+
+  .markdown {
+    @apply text-sm leading-relaxed text-patriot-text;
+  }
+  .markdown h2 {
+    @apply mt-6 font-display text-xl font-bold tracking-wide text-patriot-navy;
+  }
+  .markdown h3 {
+    @apply mt-5 font-display text-lg font-bold tracking-wide text-patriot-navy;
+  }
+  .markdown p {
+    @apply mt-3;
+  }
+  .markdown ul {
+    @apply mt-3 list-disc space-y-1 pl-5;
+  }
+  .markdown ol {
+    @apply mt-3 list-decimal space-y-1 pl-5;
+  }
+  .markdown a {
+    @apply font-semibold text-patriot-navy underline decoration-patriot-blue/40 underline-offset-4 hover:decoration-patriot-blue;
+  }
+  .markdown code {
+    @apply rounded bg-patriot-bg-soft px-1 py-0.5 font-mono text-[0.95em] text-patriot-navy;
+  }
+  .markdown blockquote {
+    @apply mt-4 border-l-2 border-patriot-border pl-4 text-patriot-muted;
+  }
+}
+
+@layer utilities {
+  .sr-only-focusable:focus,
+  .sr-only-focusable:focus-visible {
+    position: static !important;
+    width: auto !important;
+    height: auto !important;
+    margin: 0 !important;
+    overflow: visible !important;
+    clip: auto !important;
+    white-space: normal !important;
+  }
+}
