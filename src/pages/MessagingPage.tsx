@@ -15,6 +15,8 @@ import { sendSiteFormEmail } from '../lib/emailJsForms'
 import { siteConfig } from '../config/site'
 import { EnSpotSmsOptInLabel } from '../components/compliance/EnSpotSmsOptInLabel'
 import { ContactConsentLabel } from '../components/compliance/ContactConsentLabel'
+import { ReadinessChecklistFields } from '../components/forms/ReadinessChecklistFields'
+import { buildReadinessEmailData, readinessDefaultValues } from '../lib/readinessIntake'
 
 const audienceOptions = [
   { value: 'business', label: 'Business or commercial brand' },
@@ -41,6 +43,14 @@ const messagingSchema = z
     phone: z.string().optional(),
     targetAudience: z.string().optional(),
     message: z.string().min(10, 'Please describe what you are looking for (at least a few words).'),
+    readinessItems: z.array(z.string()).optional(),
+    websiteUrl: z.string().optional(),
+    messagingNumber: z.string().optional(),
+    budgetRange: z.string().optional(),
+    campaignManagerContact: z.string().optional(),
+    candidateContact: z.string().optional(),
+    decisionMakerContact: z.string().optional(),
+    readinessNotes: z.string().optional(),
     consentToContact: z.boolean().refine((v) => v === true, {
       message: 'Please confirm consent to be contacted.',
     }),
@@ -71,6 +81,7 @@ export function MessagingPage() {
       phone: '',
       targetAudience: '',
       message: '',
+      ...readinessDefaultValues,
       consentToContact: false,
       smsConsent: false,
       botField: '',
@@ -95,6 +106,7 @@ export function MessagingPage() {
         ...(values.phone?.trim() ? { phone: values.phone.trim(), smsConsent: true } : {}),
         ...(values.targetAudience?.trim() ? { targetAudience: values.targetAudience.trim() } : {}),
         message: values.message,
+        ...buildReadinessEmailData(values),
         consentToContact: true,
         agreePrivacyPolicy: true,
       },
@@ -195,6 +207,7 @@ export function MessagingPage() {
                   phone: '',
                   targetAudience: '',
                   message: '',
+                  ...readinessDefaultValues,
                   consentToContact: false,
                   smsConsent: false,
                   botField: '',
@@ -258,6 +271,8 @@ export function MessagingPage() {
                   <Textarea {...form.register('message')} aria-invalid={!!form.formState.errors.message} />
                 </Field>
               </div>
+
+              <ReadinessChecklistFields register={form.register} />
 
               <div className="md:col-span-2">
                 <label className="flex items-start gap-3 rounded-xl border border-patriot-border bg-patriot-bg-soft px-4 py-3 text-sm text-patriot-text">

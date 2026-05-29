@@ -13,6 +13,8 @@ import { Button } from '../components/ui/Button'
 import { sendSiteFormEmail } from '../lib/emailJsForms'
 import { siteConfig } from '../config/site'
 import { ContactConsentLabel } from '../components/compliance/ContactConsentLabel'
+import { ReadinessChecklistFields } from '../components/forms/ReadinessChecklistFields'
+import { buildReadinessEmailData, readinessDefaultValues } from '../lib/readinessIntake'
 
 const contactSchema = z.object({
   name: z.string().min(2, 'Please enter your name.'),
@@ -20,6 +22,14 @@ const contactSchema = z.object({
   subject: z.string().optional(),
   organizationName: z.string().optional(),
   message: z.string().min(10, 'Please enter a message.'),
+  readinessItems: z.array(z.string()).optional(),
+  websiteUrl: z.string().optional(),
+  messagingNumber: z.string().optional(),
+  budgetRange: z.string().optional(),
+  campaignManagerContact: z.string().optional(),
+  candidateContact: z.string().optional(),
+  decisionMakerContact: z.string().optional(),
+  readinessNotes: z.string().optional(),
   consentToContact: z.boolean().refine((v) => v === true, {
     message: 'Please confirm consent to be contacted.',
   }),
@@ -37,6 +47,7 @@ export function ContactPage() {
       subject: '',
       organizationName: '',
       message: '',
+      ...readinessDefaultValues,
       consentToContact: false,
       botField: '',
     },
@@ -53,6 +64,7 @@ export function ContactPage() {
         ...(values.subject?.trim() ? { subject: values.subject.trim() } : {}),
         ...(values.organizationName?.trim() ? { organizationName: values.organizationName.trim() } : {}),
         message: values.message,
+        ...buildReadinessEmailData(values),
         consentToContact: true,
         agreePrivacyPolicy: true,
       },
@@ -148,6 +160,8 @@ export function ContactPage() {
                   <Textarea {...form.register('message')} aria-invalid={!!form.formState.errors.message} />
                 </Field>
               </div>
+
+              <ReadinessChecklistFields register={form.register} />
 
               <div className="md:col-span-2">
                 <label className="flex items-start gap-3 rounded-xl border border-patriot-border bg-patriot-bg-soft px-4 py-3 text-sm text-patriot-text">
