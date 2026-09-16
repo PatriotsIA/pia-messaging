@@ -1,0 +1,202 @@
+                   PATRIOTMESSAGING.COM — SITE COPY
+                                 Single-page build · Prepared September 2026
+
+
+Build notes
+   • One page, sections in this order: Hero, Services, Pricing, Creative & digital, How it works, About,
+        Get a quote, Footer. Top nav anchors to each section.
+   • Brand colors: navy #1F3864, red #C00000, light tint #EEF4FB. Headlines in Barlow Condensed
+        (Google Fonts), body in Source Sans 3. Matches the rate card.
+   • Only text and email show prices. Every other service says "Contact for quote."
+   • The hero is a phone mock-up showing two real sample texts (below). If the theme can't do that,
+        use the two messages as pull quotes beside the headline.
+   • Contact form fields: Name, Email, Race or campaign, What you're interested in (dropdown),
+        Anything else. Submissions go to dan@patriotmessaging.com.
+   • A finished HTML version of this page is delivered alongside this document and can be used as the
+        visual reference.
+
+
+Hero
+Headline
+Reach every Texas voter you need, on the phone in their pocket.
+Subhead
+Text, email, voicemail, digital ads, mail, print, and video for Republican and conservative campaigns,
+bond issues, and recalls — statewide down to a single county, in Texas and all 50 states. Texas voter
+data is included.
+Buttons
+Get a quote (primary, red) · See text & email rates (secondary, outlined)
+Reach stats
+ Number                         Label
+ 6.98M                          Texas voter cell numbers
+ 6M+                            verified voter emails
+ 11M                            2024 general-election voters on file
+Phone mock-up — message 1 (labeled "Sent to reliable primary voters")
+Election Day is Tuesday. Polls open 7 AM – 7 PM. Find your polling place and sample ballot:
+yourcandidate.com/vote Reply STOP to end.
+Phone mock-up — message 2 (labeled "Sent to swing and low-turnout voters")
+Hardeman County neighbors: your candidate for Agriculture Commissioner is holding a town hall
+Thursday at 6 PM at the community center. Hear his plan for water, property rights, and rural roads,
+and ask your questions in person. Can't make it? Watch his interview: yourcandidate.com/interview
+Reply STOP to end.
+
+
+Services
+Section headline
+Every way to contact a voter, from one shop
+Intro
+Pick one channel or run them together. Every service runs on the matched Texas voter file — statewide
+programs and 420-character texts include it.
+Six service cards (text and email cards get a red top bar, the rest navy)
+ Service                     Description                                                  Rate line
+ Text messaging              Short reminders at 140 characters or the full case at        From $0.0225 per message
+                             420. MMS for issues and bond elections; not
+                             recommended for candidates. No opt-in required;
+                             compliant opt-out on every send.
+ Email broadcasting          Full-database sends to 8 million-plus Texas addresses,       From $0.01 per email
+                             delivered through warmed IPs and dedicated sending
+                             domains.
+ Ringless voicemail          Your recorded message lands directly in voicemail            Contact for quote
+                             without ringing the phone. No 10DLC registration
+                             needed.
+ Digital ads                 IP-targeted banner ads to matched voter households,          Contact for quote
+                             plus social, Google Display, YouTube, and streaming
+                             TV.
+ Tele-town halls             Live interactive telephone events with Q&A, real-time        Contact for quote
+                             polling, recording, and mobile invites — any size, from
+                             a county race to statewide.
+ Voter data                  Have your own texting platform or mail house? License        $0.0175 per cell / $0.01 per
+                             the matched cells and emails for your universe alone.        email, one time
+
+
+Pricing
+Section headline
+Text and email rates
+Intro
+The same per-message rate at any volume, whether you're working a county or the whole state. $500
+minimum per program.
+Text table
+ Text message                     Rate                    Best use
+ 140 characters                   $0.0225                 Invitations, early-vote and Election Day reminders
+ 420 characters                   $0.04                   Making the case — events, interviews, the argument. Data
+                                                          included at any universe size.
+ MMS (image or video)             $0.07                   Up to 1,800 characters plus an image or video. Good for
+                                                          bond issues and ballot measures; not recommended for
+                                                          candidates. Data included.
+Notes under text table
+Reliable voters get a couple of short reminders so they feel included. Swing voters get a sequence of
+longer messages inviting them to events and interviews.
+On MMS: it earns its keep when a single message has to carry a lot — a bond issue with dollar figures,
+a polling schedule, and a link all in one send. For a candidate, we don't recommend it. We don't believe
+in putting an ad on someone's phone; a plain text that reads like it came from a neighbor is why this
+works — we're effective because we do it differently.
+Email table
+ Email                                                                                 Price
+ First full-database send (8M+ addresses, 6M+ verified voters)                         $35,000
+ Second send, same campaign                                                            $20,000
+ Two full waves                                                                        $55,000
+ Smaller universe — per email sent, plus one-time $0.01 per record data                $0.01
+ charge
+Note under email table
+Statewide sends include the data. Sending the whole database costs less than carving out a slice —
+non-voters ignore it, or occasionally register.
+Sub-heading
+Setup and compliance
+Email IPs, sending domains, and setup are included in your messaging price; allow 2 to 3 weeks to
+warm them. To text under the candidate's own name, allow 10 days for Campaign Verify and 10DLC
+registration and a compliance check of the campaign website — $150. Or, at no charge, we send
+through one of our own registered, compliant platforms.
+Sub-heading
+Voter data for smaller universes
+Statewide programs include the data, and the 420-character text and MMS include the data at any
+universe size. For 140-character texts to a county, district, recall, or bond-issue universe, there is a
+one-time data charge of $0.0175 per cell record, per campaign; for email to those universes, $0.01 per
+email record. Each covers unlimited sends to that record at the rates above. If you prefer to run it on
+your own platform, we'll deliver the matched file at the same rate, licensed to your campaign for this
+cycle. Outside Texas, the data charge applies at any size, statewide included, and state-specific
+compliance is quoted.
+
+
+Creative & digital (new section between Pricing and How it
+works)
+Section headline
+Everything else a campaign needs, from the same building
+Intro
+The message needs something to link to, something to mail, and a sign in the yard. We make all of it
+here — one shop, one invoice.
+Three cards (interview card gets the red top bar)
+ Service                     Description                                                  Rate line
+ Candidate website           Full WordPress build — bio, issues, endorsements,            From $3,500
+                             events, donate and volunteer pages, sample ballot and
+                             polling-place links, mobile-ready. Built Campaign Verify
+                             and 10DLC compliant from day one, so the carriers let
+                             your texts through — something most web designers
+                             have never had to do. Hosting and updates quoted
+                             separately.
+ Television & digital        Scripted, shot, and edited 30-second spot delivered in       From $3,500
+ commercial                  broadcast and social formats. Studio at 1000 S.
+                             Jefferson; location shoots quoted.
+ Candidate interview         Recorded in our studio and delivered as a link for your      Free with any messaging
+                             420-character texts and emails.                              program
+Sub-heading
+Print, mail, and signage
+Direct mail designed, printed, and mailed to the same voter universe as your texts and emails — one
+list, every channel. Push cards, door hangers, and event materials designed here and printed to your
+quantity. Yard signs and banners from our sign supplier. All quoted per project; allow 10 business days
+from approved artwork.
+Sub-heading
+We write the message
+Every text and email is written by Patriot Messaging and sent in the candidate's name — an invitation
+from a neighbor, not an ad. That is why it gets read.
+Sub-heading
+The bundle
+Every messaging program includes the candidate interview, and rotation ads on TheCountyPost.com
+and PatriotsInAction.com run at half the published rate for the length of the program — in every county
+where you're on the ballot, and in every county for statewide candidates and issues. One vendor, one
+invoice: the message, the video it links to, and the sites where your voters already read local news.
+
+
+How it works (navy background, white text)
+Section headline
+How a program comes together
+ Step              Copy
+ 1. Scope          Tell us the race, the universe, and the date it needs to land. You get a plan and an invoice.
+ 2. Fund           Funds come in before the build. Email needs 2 to 3 weeks of lead time to warm the IPs and
+                   domains; texting in the candidate's own name needs 10 days for carrier registration.
+ 3. Build          Data is matched, sending domains and IPs are warmed, messages are written and
+                   approved.
+ 4. Fire           Everything is staged and ready, so it goes out at exactly the right moment — not a day late.
+
+
+About
+Section headline
+Run by the guy who moved a county 44 points
+In 2018, Dan Rogers looked at the Cruz race and didn't like what he saw coming in West Texas. So he
+worked out how to talk to voters by text and email in a way that got them to show up — and his home
+county moved 44 points toward Republicans in a year when almost every other county in Texas moved
+the other way. A national strategist called it a world record. That method is what Patriot Messaging
+sells.
+Dan is a Texas Panhandle rancher and businessman, a county Republican chairman, and an election-
+integrity author. Patriot Messaging works out of a restored historic building in downtown Amarillo that
+also houses Patriots in Action, The County Post, MyLocalGOP.com, and The Ballot Box, now in
+development — so the people writing your messages are talking to voters every day, from all over the
+country.
+
+
+Get a quote
+Section headline
+Get a quote
+Intro
+Tell us about the race and we'll send a plan and a rate card. Most quotes go out the same day.
+Contact block
+Dan Rogers · dan@patriotmessaging.com · Patriot Messaging, LLC · 1000 S. Jefferson Street,
+Amarillo, TX 79101
+Form dropdown options
+Text messaging · Email · Ringless voicemail · Digital ads · Tele-town hall · Voter data · Not sure —
+recommend a program
+Submit button
+Send request
+
+
+Footer
+© 2026 Patriot Messaging, LLC · Amarillo, Texas
+Political messaging services. Not authorized by any candidate or candidate's committee.

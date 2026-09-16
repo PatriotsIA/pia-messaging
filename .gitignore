@@ -48,3 +48,7 @@ coverage
 # OS
 .DS_Store
 Thumbs.db
+
+# Browser checks
+test-results
+playwright-report

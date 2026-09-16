@@ -1,12 +1,12 @@
 export const siteConfig = {
   name: 'Patriot Messaging',
-  legalName: 'Patriot Messaging',
+  legalName: 'Patriot Messaging, LLC',
   url: 'https://patriotmessaging.com',
-  tagline: 'Compliant outreach for business and civic campaigns.',
+  tagline: 'Always Ready. Always Connected.',
   description:
-    'A messaging and outreach service for promotional business campaigns, political candidates, issue advocacy, and civic organizations that need clear intake, consent, and compliant communication workflows.',
+    'Text, email, voicemail, digital ads, mail, print, and video for Republican and conservative campaigns, bond issues, and recalls — in Texas and all 50 states. Texas voter data is included.',
   contact: {
-    email: 'giving@patriotsforaction.org',
+    email: 'dan@patriotmessaging.com',
     /** Display (after "Phone: " in UI where labeled) */
     phone: '(866) 756 1776',
     /** E.164 for <a href="tel:..."> */
@@ -19,9 +19,9 @@ export const siteConfig = {
     terms: '/terms',
   },
   brand: {
-    pacLogoSrc: '/brand/PIAPatriot.png',
-    faviconSrc: '/brand/SocialIcon.png',
-    footerLogoSrc: '/brand/PIAFooterLogo.png',
+    pacLogoSrc: '/brand/patriot-messaging-logo.png',
+    faviconSrc: '/favicon.svg',
+    footerLogoSrc: '/brand/patriot-messaging-logo.png',
     patriotsInActionLockupSrc: '/brand/PIAFullTextLogoRedWhite.png',
     operationShowUpCoverSrc: '/brand/operation-show-up-cover.png',
     coloringBookCoverSrc: '/brand/ColoringBookFront.webp',

@@ -1,4 +1,5 @@
 import emailjs from '@emailjs/browser'
+import { siteConfig } from '../config/site'
 
 export type SiteFormFieldValue = string | string[] | boolean | undefined
 
@@ -7,6 +8,11 @@ function getEmailJsConfig() {
   const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID as string | undefined
   const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY as string | undefined
   return { serviceId, templateId, publicKey }
+}
+
+export function hasEmailJsConfig() {
+  const { serviceId, templateId, publicKey } = getEmailJsConfig()
+  return Boolean(serviceId?.trim() && templateId?.trim() && publicKey?.trim())
 }
 
 function formatFieldLine(key: string, value: SiteFormFieldValue): string | null {
@@ -51,7 +57,9 @@ export async function sendSiteFormEmail(params: {
   const name = String(params.data.name ?? '').trim() || 'Website visitor'
   const title =
     String(params.emailSubjectTitle ?? params.formLabel).trim() || params.formLabel
-  const time = new Date().toLocaleString(undefined, { dateStyle: 'medium', timeStyle: 'short' })
+  const submittedAt = new Date()
+  const time = submittedAt.toLocaleString(undefined, { dateStyle: 'medium', timeStyle: 'short' })
+  const email = String(params.data.email ?? '').trim()
   const message = [`Form: ${params.formLabel}`, '', formatMessageBody(params.data)].join('\n')
 
   await emailjs.send(
@@ -62,6 +70,11 @@ export async function sendSiteFormEmail(params: {
       title,
       message,
       time,
+      email,
+      to_email: siteConfig.contact.email,
+      reply_to: email,
+      submitted_at: submittedAt.toISOString(),
+      page_url: typeof window !== 'undefined' ? window.location.href : siteConfig.url,
     },
     { publicKey: publicKey.trim() },
   )

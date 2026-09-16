@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Patriot Messaging — Texas voter contact by text, email, voicemail, and digital ads</title>
+<meta name="description" content="Patriot Messaging, LLC delivers text, email, ringless voicemail, digital ads, and tele-town halls to Texas voters. Data included. Amarillo, Texas.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#1F3864; --navy-deep:#152744; --red:#C00000; --paper:#FFFFFF;
+    --tint:#EEF4FB; --ink:#2B2B2B; --muted:#5C6470; --line:#D6DEE8;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  body{margin:0;font-family:"Source Sans 3",Arial,sans-serif;font-size:18px;line-height:1.55;color:var(--ink);background:var(--paper)}
+  h1,h2,h3{font-family:"Barlow Condensed",Arial Narrow,sans-serif;line-height:1.05;margin:0;color:var(--navy)}
+  h1{font-size:clamp(44px,7vw,84px);font-weight:700;letter-spacing:-.01em}
+  h2{font-size:clamp(34px,4.5vw,52px);font-weight:700}
+  h3{font-size:26px;font-weight:600}
+  p{margin:0 0 1em;max-width:62ch}
+  a{color:var(--red)}
+  a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid var(--red);outline-offset:3px}
+  .wrap{width:min(1120px,92vw);margin:0 auto}
+  section{padding:88px 0}
+
+  /* header */
+  header{background:var(--navy);color:#fff;position:sticky;top:0;z-index:5;box-shadow:0 2px 0 var(--red)}
+  header .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .brand{font-family:"Barlow Condensed";font-weight:700;font-size:26px;color:#fff;text-decoration:none;letter-spacing:.02em}
+  .brand span{color:#F2B8B8}
+  nav a{color:#fff;text-decoration:none;margin-left:28px;font-weight:600;font-size:17px}
+  nav a:hover{text-decoration:underline}
+  @media(max-width:720px){nav{display:none}}
+
+  /* hero */
+  .hero{background:var(--paper);padding:80px 0 72px;border-bottom:1px solid var(--line)}
+  .hero .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:center}
+  @media(max-width:860px){.hero .wrap{grid-template-columns:1fr}}
+  .hero p.lead{font-size:22px;color:var(--muted);margin-top:22px}
+  .btn{display:inline-block;background:var(--red);color:#fff;text-decoration:none;font-weight:600;padding:14px 26px;border:0;font-size:18px;cursor:pointer}
+  .btn:hover{background:#A30000}
+  .btn.ghost{background:transparent;color:var(--navy);border:2px solid var(--navy);margin-left:12px}
+  .btn.ghost:hover{background:var(--tint)}
+  .reach{display:flex;gap:40px;margin-top:40px;flex-wrap:wrap}
+  .reach div{border-left:4px solid var(--red);padding-left:14px}
+  .reach strong{display:block;font-family:"Barlow Condensed";font-size:40px;color:var(--navy);line-height:1}
+  .reach small{color:var(--muted);font-size:16px}
+
+  /* phone */
+  .phone{background:var(--navy-deep);border-radius:36px;padding:18px 16px 26px;max-width:340px;margin:0 auto;box-shadow:0 18px 40px rgba(31,56,100,.25)}
+  .phone .screen{background:#F2F2F7;border-radius:24px;padding:16px 12px;min-height:420px;display:flex;flex-direction:column;gap:12px}
+  .phone .from{text-align:center;color:#6b6b70;font-size:14px;padding-bottom:6px;border-bottom:1px solid #ddd}
+  .bubble{background:#E5E5EA;color:#111;border-radius:18px 18px 18px 4px;padding:11px 14px;font-size:15px;line-height:1.4;max-width:92%}
+  .bubble.short{max-width:78%}
+  .ts{font-size:12px;color:#8a8a8f;text-align:center}
+
+  /* services */
+  .services{background:var(--tint)}
+  .creative .grid{margin-top:32px}
+  .creative .svc{border:1px solid var(--line);border-top:5px solid var(--navy)}
+  .creative .svc.lead{border-top-color:var(--red)}
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:40px}
+  @media(max-width:900px){.grid{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:600px){.grid{grid-template-columns:1fr}}
+  .svc{background:#fff;padding:28px 26px 22px;border-top:5px solid var(--navy)}
+  .svc.lead{border-top-color:var(--red)}
+  .svc p{font-size:17px;color:var(--muted);margin:10px 0 0}
+  .svc .rate{display:block;margin-top:14px;font-weight:600;color:var(--navy)}
+
+  /* pricing */
+  .pricing table{width:100%;border-collapse:collapse;margin-top:28px;font-size:17px}
+  .pricing th{background:var(--navy);color:#fff;text-align:left;padding:12px 14px;font-weight:600}
+  .pricing td{padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+  .pricing td.num{white-space:nowrap;font-weight:600;color:var(--navy)}
+  .pricing .two{display:grid;grid-template-columns:1fr 1fr;gap:48px}
+  @media(max-width:860px){.pricing .two{grid-template-columns:1fr}}
+  .fine{font-size:16px;color:var(--muted);margin-top:14px}
+
+  /* process */
+  .process{background:var(--navy);color:#fff}
+  .process h2{color:#fff}
+  .steps{counter-reset:s;display:grid;grid-template-columns:repeat(4,1fr);gap:32px;margin-top:40px}
+  @media(max-width:860px){.steps{grid-template-columns:1fr 1fr}}
+  @media(max-width:520px){.steps{grid-template-columns:1fr}}
+  .steps div{counter-increment:s;border-top:2px solid rgba(255,255,255,.35);padding-top:16px}
+  .steps div::before{content:counter(s);font-family:"Barlow Condensed";font-size:44px;font-weight:700;color:#F2B8B8;display:block;line-height:1}
+  .steps h3{color:#fff;margin:8px 0 6px}
+  .steps p{color:#D6E4F0;font-size:17px;margin:0}
+
+  /* about + contact */
+  .about .wrap{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+  @media(max-width:860px){.about .wrap{grid-template-columns:1fr}}
+  .contact{background:var(--tint)}
+  .contact .wrap{display:grid;grid-template-columns:1fr 1fr;gap:56px}
+  @media(max-width:860px){.contact .wrap{grid-template-columns:1fr}}
+  form label{display:block;font-weight:600;margin:14px 0 6px}
+  form input,form textarea,form select{width:100%;padding:12px;border:1px solid #B9C4D2;font:inherit;font-size:17px;background:#fff}
+  form textarea{min-height:120px}
+  .addr{font-style:normal;line-height:1.7}
+  footer{background:var(--navy-deep);color:#C9D3E0;padding:26px 0;font-size:15px}
+  footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a class="brand" href="#top">PATRIOT <span>MESSAGING</span></a>
+    <nav aria-label="Sections">
+      <a href="#services">Services</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#creative">Creative</a>
+      <a href="#process">How it works</a>
+      <a href="#about">About</a>
+      <a href="#contact">Get a quote</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <div class="wrap">
+    <div>
+      <h1>Reach every Texas voter you need, on the phone in their pocket.</h1>
+      <p class="lead">Text, email, voicemail, digital ads, mail, print, and video for Republican and conservative campaigns, bond issues, and recalls — statewide down to a single county, in Texas and all 50 states. Texas voter data is included.</p>
+      <a class="btn" href="#contact">Get a quote</a>
+      <a class="btn ghost" href="#pricing">See text &amp; email rates</a>
+      <div class="reach" aria-label="Reach">
+        <div><strong>6.98M</strong><small>Texas voter cell numbers</small></div>
+        <div><strong>6M+</strong><small>verified voter emails</small></div>
+        <div><strong>11M</strong><small>2024 general-election voters on file</small></div>
+      </div>
+    </div>
+    <div class="phone" aria-label="Example text messages">
+      <div class="screen">
+        <div class="from">+1 (806) 555-0100</div>
+        <div class="bubble">Election Day is Tuesday. Polls open 7 AM – 7 PM. Find your polling place and sample ballot: yourcandidate.com/vote &nbsp;Reply STOP to end.</div>
+        <div class="ts">Sent to reliable primary voters</div>
+        <div class="bubble">Hardeman County neighbors: your candidate for Agriculture Commissioner is holding a town hall Thursday at 6 PM at the community center. Hear his plan for water, property rights, and rural roads, and ask your questions in person. Can't make it? Watch his interview: yourcandidate.com/interview &nbsp;Reply STOP to end.</div>
+        <div class="ts">Sent to swing and low-turnout voters</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="services" id="services">
+  <div class="wrap">
+    <h2>Every way to contact a voter, from one shop</h2>
+    <p>Pick one channel or run them together. Every service runs on the matched Texas voter file — statewide programs and 420-character texts include it.</p>
+    <div class="grid">
+      <div class="svc lead"><h3>Text messaging</h3><p>Short reminders at 140 characters or the full case at 420. MMS for issues and bond elections; not recommended for candidates. No opt-in required; compliant opt-out on every send.</p><span class="rate">From $0.0225 per message</span></div>
+      <div class="svc lead"><h3>Email broadcasting</h3><p>Full-database sends to 8 million-plus Texas addresses, delivered through warmed IPs and dedicated sending domains.</p><span class="rate">From $0.01 per email</span></div>
+      <div class="svc"><h3>Ringless voicemail</h3><p>Your recorded message lands directly in voicemail without ringing the phone. No 10DLC registration needed.</p><span class="rate">Contact for quote</span></div>
+      <div class="svc"><h3>Digital ads</h3><p>IP-targeted banner ads to matched voter households, plus social, Google Display, YouTube, and streaming TV.</p><span class="rate">Contact for quote</span></div>
+      <div class="svc"><h3>Tele-town halls</h3><p>Live interactive telephone events with Q&amp;A, real-time polling, recording, and mobile invites — any size, from a county race to statewide.</p><span class="rate">Contact for quote</span></div>
+      <div class="svc"><h3>Voter data</h3><p>Have your own texting platform or mail house? License the matched cells and emails for your universe alone.</p><span class="rate">$0.0175 per cell / $0.01 per email, one time</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="pricing" id="pricing">
+  <div class="wrap">
+    <h2>Text and email rates</h2>
+    <p>The same per-message rate at any volume, whether you're working a county or the whole state. $500 minimum per program.</p>
+    <div class="two">
+      <div>
+        <table>
+          <caption class="visually-hidden" style="position:absolute;left:-9999px">Text messaging rates</caption>
+          <tr><th>Text message</th><th>Rate</th><th>Best use</th></tr>
+          <tr><td>140 characters</td><td class="num">$0.0225</td><td>Invitations, early-vote and Election Day reminders</td></tr>
+          <tr><td>420 characters</td><td class="num">$0.04</td><td>Making the case — events, interviews, the argument. Data included at any universe size.</td></tr>
+          <tr><td>MMS (image or video)</td><td class="num">$0.07</td><td>Up to 1,800 characters plus an image or video. Good for bond issues and ballot measures; not recommended for candidates. Data included.</td></tr>
+        </table>
+        <p class="fine">Reliable voters get a couple of short reminders so they feel included. Swing voters get a sequence of longer messages inviting them to events and interviews.</p>
+        <p class="fine">On MMS: it earns its keep when a single message has to carry a lot — a bond issue with dollar figures, a polling schedule, and a link all in one send. For a candidate, we don't recommend it. We don't believe in putting an ad on someone's phone; a plain text that reads like it came from a neighbor is why this works — we're effective because we do it differently.</p>
+      </div>
+      <div>
+        <table>
+          <tr><th>Email</th><th>Price</th></tr>
+          <tr><td>First full-database send<br><span style="color:var(--muted);font-size:15px">8M+ addresses, 6M+ verified voters</span></td><td class="num">$35,000</td></tr>
+          <tr><td>Second send, same campaign</td><td class="num">$20,000</td></tr>
+          <tr><td>Two full waves</td><td class="num">$55,000</td></tr>
+          <tr><td>Smaller universe — per email sent<br><span style="color:var(--muted);font-size:15px">plus one-time $0.01 per record data charge</span></td><td class="num">$0.01</td></tr>
+        </table>
+        <p class="fine">Statewide sends include the data. Sending the whole database costs less than carving out a slice — non-voters ignore it, or occasionally register.</p>
+      </div>
+    </div>
+    <h3 style="margin-top:40px">Setup and compliance</h3>
+    <p class="fine" style="max-width:none">Email IPs, sending domains, and setup are included in your messaging price; allow 2 to 3 weeks to warm them. To text under the candidate's own name, allow 10 days for Campaign Verify and 10DLC registration and a compliance check of the campaign website — $150. Or, at no charge, we send through one of our own registered, compliant platforms.</p>
+    <h3 style="margin-top:40px">Voter data for smaller universes</h3>
+    <p class="fine" style="max-width:none">Statewide programs include the data, and the 420-character text and MMS include the data at any universe size. For 140-character texts to a county, district, recall, or bond-issue universe, there is a one-time data charge of $0.0175 per cell record, per campaign; for email to those universes, $0.01 per email record. Each covers unlimited sends to that record at the rates above. If you prefer to run it on your own platform, we'll deliver the matched file at the same rate, licensed to your campaign for this cycle. Outside Texas, the data charge applies at any size, statewide included, and state-specific compliance is quoted.</p>
+  </div>
+</section>
+
+<section class="creative" id="creative">
+  <div class="wrap">
+    <h2>Everything else a campaign needs, from the same building</h2>
+    <p>The message needs something to link to, something to mail, and a sign in the yard. We make all of it here — one shop, one invoice.</p>
+    <div class="grid">
+      <div class="svc"><h3>Candidate website</h3><p>Full WordPress build — bio, issues, endorsements, events, donate and volunteer pages, sample ballot and polling-place links, mobile-ready. Built Campaign Verify and 10DLC compliant from day one, so the carriers let your texts through — something most web designers have never had to do. Hosting and updates quoted separately.</p><span class="rate">From $3,500</span></div>
+      <div class="svc"><h3>Television &amp; digital commercial</h3><p>Scripted, shot, and edited 30-second spot delivered in broadcast and social formats. Studio at 1000 S. Jefferson; location shoots quoted.</p><span class="rate">From $3,500</span></div>
+      <div class="svc lead"><h3>Candidate interview</h3><p>Recorded in our studio and delivered as a link for your 420-character texts and emails.</p><span class="rate">Free with any messaging program</span></div>
+    </div>
+    <h3 style="margin-top:44px">Print, mail, and signage</h3>
+    <p class="fine" style="max-width:none">Direct mail designed, printed, and mailed to the same voter universe as your texts and emails — one list, every channel. Push cards, door hangers, and event materials designed here and printed to your quantity. Yard signs and banners from our sign supplier. All quoted per project; allow 10 business days from approved artwork.</p>
+    <h3 style="margin-top:32px">We write the message</h3>
+    <p>Every text and email is written by Patriot Messaging and sent in the candidate's name — an invitation from a neighbor, not an ad. That is why it gets read.</p>
+    <h3 style="margin-top:32px">The bundle</h3>
+    <p>Every messaging program includes the candidate interview, and rotation ads on TheCountyPost.com and PatriotsInAction.com run at half the published rate for the length of the program — in every county where you're on the ballot, and in every county for statewide candidates and issues. One vendor, one invoice: the message, the video it links to, and the sites where your voters already read local news.</p>
+  </div>
+</section>
+
+<section class="process" id="process">
+  <div class="wrap">
+    <h2>How a program comes together</h2>
+    <div class="steps">
+      <div><h3>Scope</h3><p>Tell us the race, the universe, and the date it needs to land. You get a plan and an invoice.</p></div>
+      <div><h3>Fund</h3><p>Funds come in before the build. Email needs 2 to 3 weeks of lead time to warm the IPs and domains; texting in the candidate's own name needs 10 days for carrier registration.</p></div>
+      <div><h3>Build</h3><p>Data is matched, sending domains and IPs are warmed, messages are written and approved.</p></div>
+      <div><h3>Fire</h3><p>Everything is staged and ready, so it goes out at exactly the right moment — not a day late.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="wrap">
+    <div>
+      <h2>Run by the guy who moved a county 44 points</h2>
+    </div>
+    <div>
+      <p>In 2018, Dan Rogers looked at the Cruz race and didn't like what he saw coming in West Texas. So he worked out how to talk to voters by text and email in a way that got them to show up — and his home county moved 44 points toward Republicans in a year when almost every other county in Texas moved the other way. A national strategist called it a record. That method is what Patriot Messaging sells.</p>
+      <p>Dan is a Texas Panhandle rancher and businessman, a county Republican chairman, and an election-integrity author. Patriot Messaging works out of a restored historic building in downtown Amarillo that also houses Patriots in Action, The County Post, MyLocalGOP.com, and The Ballot Box, now in development — so the people writing your messages are talking to voters every day, from all over the country.</p>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div>
+      <h2>Get a quote</h2>
+      <p>Tell us about the race and we'll send a plan and a rate card. Most quotes go out the same day.</p>
+      <address class="addr">
+        Dan Rogers<br>
+        <a href="mailto:dan@patriotmessaging.com">dan@patriotmessaging.com</a><br>
+        Patriot Messaging, LLC<br>
+        1000 S. Jefferson Street<br>
+        Amarillo, TX 79101
+      </address>
+    </div>
+    <form action="mailto:dan@patriotmessaging.com" method="post" enctype="text/plain">
+      <label for="name">Your name</label><input id="name" name="name" required>
+      <label for="email">Email</label><input id="email" name="email" type="email" required>
+      <label for="race">Race or campaign</label><input id="race" name="race" placeholder="e.g., County Judge, Hardeman County">
+      <label for="channels">What you're interested in</label>
+      <select id="channels" name="channels"><option>Text messaging</option><option>Email</option><option>Ringless voicemail</option><option>Digital ads</option><option>Tele-town hall</option><option>Voter data</option><option>Not sure — recommend a program</option></select>
+      <label for="notes">Anything else</label><textarea id="notes" name="notes" placeholder="Universe size, timing, budget range"></textarea>
+      <p style="margin-top:18px"><button class="btn" type="submit">Send request</button></p>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Patriot Messaging, LLC · Amarillo, Texas</span>
+    <span>Political messaging services. Not authorized by any candidate or candidate's committee.</span>
+  </div>
+</footer>
+
+</body>
+</html>

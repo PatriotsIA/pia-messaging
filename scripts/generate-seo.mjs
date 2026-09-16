@@ -24,9 +24,6 @@ function escapeXml(value) {
 
 const staticRoutes = [
   { path: '/', priority: '1.0', changefreq: 'weekly' },
-  { path: '/messaging', priority: '0.9', changefreq: 'monthly' },
-  { path: '/services', priority: '0.8', changefreq: 'monthly' },
-  { path: '/contact', priority: '0.7', changefreq: 'monthly' },
   { path: '/privacy', priority: '0.3', changefreq: 'yearly' },
   { path: '/terms', priority: '0.3', changefreq: 'yearly' },
 ]

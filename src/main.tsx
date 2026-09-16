@@ -12,7 +12,7 @@ const app = (
   </StrictMode>
 )
 
-if (container.hasChildNodes()) {
+if (container.childElementCount > 0) {
   hydrateRoot(container, app)
 } else {
   createRoot(container).render(app)

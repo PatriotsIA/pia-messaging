@@ -1,275 +1,381 @@
-import { ArrowRight, Megaphone, MessageSquareText, ShieldCheck, Users } from 'lucide-react'
-import { z } from 'zod'
-import { useForm } from 'react-hook-form'
-import { zodResolver } from '@hookform/resolvers/zod'
-import toast from 'react-hot-toast'
-import { LinkButton } from '../components/ui/LinkButton'
-import { Card, CardGlow } from '../components/ui/Card'
-import { Reveal } from '../components/motion/Reveal'
-import { Seo } from '../lib/seo/Seo'
+import {
+  ArrowRight,
+  ChartNoAxesColumnIncreasing,
+  Database,
+  Mail,
+  MessageCircle,
+  Phone,
+  Plus,
+  Star,
+  Users,
+} from 'lucide-react'
+import {
+  aboutCopy,
+  creativeCopy,
+  creativeServices,
+  heroCopy,
+  pricingCopy,
+  services,
+  steps,
+  textRates,
+} from '../config/content'
 import { siteConfig } from '../config/site'
+import { PhonePreview } from '../components/home/PhonePreview'
+import { ReferencePhoto } from '../components/home/ReferencePhoto'
+import { QuoteForm } from '../components/forms/QuoteForm'
+import { Seo } from '../lib/seo/Seo'
 import { organizationJsonLd, websiteJsonLd } from '../lib/seo/structuredData'
-import { Field } from '../components/ui/Field'
-import { Input } from '../components/ui/Input'
-import { Textarea } from '../components/ui/Textarea'
-import { Button } from '../components/ui/Button'
-import { sendSiteFormEmail } from '../lib/emailJsForms'
-import { ContactConsentLabel } from '../components/compliance/ContactConsentLabel'
-import { ReadinessChecklistFields } from '../components/forms/ReadinessChecklistFields'
-import { buildReadinessEmailData, readinessDefaultValues } from '../lib/readinessIntake'
 
-const serviceCards = [
-  {
-    title: 'Promotional messaging',
-    icon: Megaphone,
-    description:
-      'Business announcements, event promotion, customer reactivation, appointment reminders, and audience updates with clear opt-in language.',
-  },
-  {
-    title: 'Political outreach',
-    icon: Users,
-    description:
-      'Candidate, committee, and issue-advocacy outreach intake for voter education, persuasion, fundraising, GOTV, and event turnout.',
-  },
-  {
-    title: 'Compliance-first setup',
-    icon: ShieldCheck,
-    description:
-      'Website disclosures, consent labels, privacy and terms links, HELP/STOP language, and intake documentation aligned with 10DLC review expectations.',
-  },
-]
-
-const homeInquirySchema = z.object({
-  name: z.string().min(2, 'Please enter your name.'),
-  email: z.string().email('Please enter a valid email address.'),
-  organizationName: z.string().optional(),
-  message: z.string().min(10, 'Please tell us a little about your messaging needs.'),
-  readinessItems: z.array(z.string()).optional(),
-  websiteUrl: z.string().optional(),
-  messagingNumber: z.string().optional(),
-  budgetRange: z.string().optional(),
-  campaignManagerContact: z.string().optional(),
-  candidateContact: z.string().optional(),
-  decisionMakerContact: z.string().optional(),
-  readinessNotes: z.string().optional(),
-  consentToContact: z.boolean().refine((v) => v === true, {
-    message: 'Please confirm consent to be contacted.',
-  }),
-  botField: z.string().optional(),
-})
-
-type HomeInquiryValues = z.infer<typeof homeInquirySchema>
+const icons = {
+  message: MessageCircle,
+  mail: Mail,
+  phone: Phone,
+  chart: ChartNoAxesColumnIncreasing,
+  users: Users,
+  database: Database,
+}
 
 export function HomePage() {
-  const form = useForm<HomeInquiryValues>({
-    resolver: zodResolver(homeInquirySchema),
-    defaultValues: {
-      name: '',
-      email: '',
-      organizationName: '',
-      message: '',
-      ...readinessDefaultValues,
-      consentToContact: false,
-      botField: '',
-    },
-  })
-
-  async function onSubmit(values: HomeInquiryValues) {
-    if (values.botField) return
-    await sendSiteFormEmail({
-      formLabel: 'Patriot Messaging home page readiness inquiry',
-      emailSubjectTitle: values.organizationName?.trim()
-        ? `Readiness inquiry - ${values.organizationName.trim()}`
-        : 'Readiness inquiry',
-      data: {
-        name: values.name,
-        email: values.email,
-        ...(values.organizationName?.trim() ? { organizationName: values.organizationName.trim() } : {}),
-        message: values.message,
-        ...buildReadinessEmailData(values),
-        consentToContact: true,
-        agreePrivacyPolicy: true,
-      },
-    })
-  }
-
   return (
     <>
       <Seo
-        title="Messaging & outreach services"
-        description="Patriot Messaging supports promotional business messaging and political outreach for candidates, causes, and issue campaigns."
+        title="Texas roots. Nationwide reach."
         canonicalPath="/"
-        keywords={['Patriot Messaging', 'SMS outreach', 'political texting', 'business messaging', '10DLC compliance']}
         jsonLd={[organizationJsonLd(), websiteJsonLd()]}
       />
-
-      <div className="relative">
-        <div className="absolute inset-x-0 top-0 -z-10 h-32 bg-gradient-to-b from-patriot-blue/10 to-transparent" />
-
-        <div className="mx-auto max-w-4xl text-center">
-          <Reveal>
-            <div className="text-xs font-bold uppercase tracking-[0.28em] text-patriot-red">
-              Business, political, and issue outreach
-            </div>
-            <h1 className="mt-3 font-display text-4xl font-bold leading-[1.05] tracking-wide text-patriot-navy sm:text-6xl">
-              Patriot Messaging
+      <section className="hero-section" id="top" aria-labelledby="hero-title">
+        <div className="hero-ribbon" aria-hidden="true" />
+        <ReferencePhoto name="capitol" className="hero-capitol" decorative />
+        <div className="site-container hero-layout">
+          <div className="hero-copy">
+            <p className="eyebrow eyebrow-light">
+              Texas roots. Nationwide reach.
+            </p>
+            <h1 id="hero-title">
+              Reach every Texas voter you need, <span>on the phone</span> in
+              their pocket.
             </h1>
-            <p className="mx-auto mt-3 max-w-2xl text-sm font-semibold leading-snug tracking-wide text-patriot-navy/85 sm:text-base">
-              {siteConfig.tagline}
-            </p>
-            <p className="mx-auto mt-4 max-w-3xl text-base leading-relaxed text-patriot-text sm:text-lg">
-              Reach the right people with clear, compliant messaging workflows for business promotions, candidate
-              campaigns, public officials, ballot issues, advocacy groups, and civic organizations.
-            </p>
-          </Reveal>
-
-          <Reveal delay={0.08}>
-            <div className="mt-6 flex flex-wrap justify-center gap-3">
-              <LinkButton to="/messaging" variant="primary">
-                Start an outreach inquiry <ArrowRight className="h-4 w-4" />
-              </LinkButton>
-              <LinkButton to="/contact" variant="outline">
-                Contact us <MessageSquareText className="h-4 w-4" />
-              </LinkButton>
+            <p className="hero-intro">{heroCopy.intro}</p>
+            <div className="hero-actions">
+              <a className="button button-primary" href="#contact">
+                Get a quote <ArrowRight />
+              </a>
+              <a className="button button-outline" href="#pricing">
+                See text &amp; email rates
+              </a>
             </div>
-            <div className="mx-auto mt-4 max-w-3xl rounded-2xl border border-patriot-border bg-patriot-bg-soft p-4 text-left">
-              <div className="text-xs font-bold uppercase tracking-[0.22em] text-patriot-red">Required consent language</div>
-              <p className="mt-2 text-xs leading-relaxed text-patriot-muted">
-                Message and data rates may apply. Message frequency varies. Reply STOP to opt out and HELP for help.
-                Consent is not required as a condition of purchase. SMS information is not rented, sold, or shared.
-              </p>
-            </div>
-          </Reveal>
+          </div>
+          <PhonePreview />
         </div>
+      </section>
 
-        <div className="mt-12 grid gap-6 lg:grid-cols-3">
-          {serviceCards.map((service, index) => {
-            const Icon = service.icon
-            return (
-              <Reveal key={service.title} delay={index * 0.05}>
-                <Card>
-                  <CardGlow />
-                  <div className="relative">
-                    <div className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-patriot-blue/10 text-patriot-blue">
-                      <Icon className="h-5 w-5" />
-                    </div>
-                    <h2 className="mt-4 font-display text-2xl font-bold tracking-wide text-patriot-navy">
-                      {service.title}
-                    </h2>
-                    <p className="mt-3 text-sm leading-relaxed text-patriot-text">{service.description}</p>
-                  </div>
-                </Card>
-              </Reveal>
-            )
-          })}
-        </div>
-
-        <Reveal delay={0.14}>
-          <section className="mt-12 rounded-3xl border border-patriot-border bg-patriot-bg p-6 shadow-card sm:p-8">
-            <div className="grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
-              <div>
-                <div className="text-xs font-bold uppercase tracking-[0.26em] text-patriot-red">How we help</div>
-                <h2 className="mt-2 font-display text-3xl font-bold tracking-wide text-patriot-navy">
-                  Outreach with the disclosures reviewers expect
-                </h2>
-              </div>
-              <div className="grid gap-4 sm:grid-cols-2">
-                {[
-                  'Program intake for promotional and political messaging',
-                  'On-site contact forms wired through EmailJS',
-                  'Privacy and terms links beside consent checkboxes',
-                  'HELP/STOP, frequency, carrier, and no-purchase disclosures',
-                ].map((item) => (
-                  <div key={item} className="rounded-2xl border border-patriot-border bg-patriot-bg-soft p-4 text-sm font-semibold text-patriot-navy">
-                    {item}
-                  </div>
-                ))}
-              </div>
-            </div>
-          </section>
-        </Reveal>
-
-        <Reveal delay={0.18}>
-          <section className="mt-12 rounded-3xl border border-patriot-border bg-patriot-bg p-6 shadow-card sm:p-8">
-            <div className="grid gap-8 lg:grid-cols-[0.85fr_1.15fr]">
-              <div>
-                <div className="text-xs font-bold uppercase tracking-[0.26em] text-patriot-red">Readiness check</div>
-                <h2 className="mt-2 font-display text-3xl font-bold tracking-wide text-patriot-navy">
-                  Know what is ready before your first message goes out
-                </h2>
-                <p className="mt-3 text-sm leading-relaxed text-patriot-text">
-                  Candidates, campaigns, and businesses can use this quick intake to tell us what is already in place:
-                  policies, verification, numbers, contacts, budget, and list details.
-                </p>
-              </div>
-
-              <Card>
-                <CardGlow />
-                <div className="relative">
-                  <div className="text-xs font-bold uppercase tracking-[0.22em] text-patriot-red">Email contact form</div>
-                  <form
-                    className="mt-5 grid gap-4 md:grid-cols-2"
-                    onSubmit={form.handleSubmit(async (values) => {
-                      await toast.promise(onSubmit(values), {
-                        loading: 'Sending...',
-                        success: 'Thanks - we received your readiness details.',
-                        error: 'Send failed. Please try again or email us directly.',
-                      })
-                      form.reset()
-                    })}
-                    name="home-readiness-inquiry"
-                  >
-                    <div className="hidden">
-                      <label>
-                        Do not fill this out if you are human: <input {...form.register('botField')} />
-                      </label>
-                    </div>
-
-                    <Field label="Name" error={form.formState.errors.name?.message}>
-                      <Input {...form.register('name')} aria-invalid={!!form.formState.errors.name} autoComplete="name" />
-                    </Field>
-                    <Field label="Email" error={form.formState.errors.email?.message}>
-                      <Input {...form.register('email')} aria-invalid={!!form.formState.errors.email} autoComplete="email" />
-                    </Field>
-                    <div className="md:col-span-2">
-                      <Field label="Campaign, organization, or business">
-                        <Input {...form.register('organizationName')} autoComplete="organization" />
-                      </Field>
-                    </div>
-                    <div className="md:col-span-2">
-                      <Field label="What are you trying to send?" error={form.formState.errors.message?.message}>
-                        <Textarea {...form.register('message')} aria-invalid={!!form.formState.errors.message} />
-                      </Field>
-                    </div>
-
-                    <ReadinessChecklistFields register={form.register} />
-
-                    <div className="md:col-span-2">
-                      <label className="flex items-start gap-3 rounded-xl border border-patriot-border bg-patriot-bg-soft px-4 py-3 text-sm text-patriot-text">
-                        <input type="checkbox" {...form.register('consentToContact')} className="mt-1 h-4 w-4 accent-patriot-blue" />
-                        <span>
-                          <ContactConsentLabel purpose="my readiness and messaging inquiry" />
-                          {form.formState.errors.consentToContact?.message ? (
-                            <span className="ml-2 text-xs font-semibold text-patriot-red">
-                              {form.formState.errors.consentToContact.message}
-                            </span>
-                          ) : null}
-                        </span>
-                      </label>
-                    </div>
-
-                    <div className="md:col-span-2 flex justify-end">
-                      <Button type="submit" variant="primary">
-                        Send readiness details
-                      </Button>
-                    </div>
-                  </form>
-                </div>
-              </Card>
-            </div>
-          </section>
-        </Reveal>
+      <div className="reach-strip" aria-label="Voter reach">
+        <dl className="site-container reach-grid">
+          <div>
+            <dt>Texas voter cell numbers</dt>
+            <dd>6.98M</dd>
+          </div>
+          <div>
+            <dt>verified voter emails</dt>
+            <dd>6M+</dd>
+          </div>
+          <div>
+            <dt>2024 general-election voters on file</dt>
+            <dd>11M</dd>
+          </div>
+        </dl>
       </div>
+
+      <section
+        className="section services-section"
+        id="services"
+        aria-labelledby="services-title"
+      >
+        <div className="site-container">
+          <div className="section-heading centered">
+            <p className="eyebrow">Our services</p>
+            <h2 id="services-title">
+              Every way to contact a voter, from one shop
+            </h2>
+            <p>
+              Pick one channel or run them together. Every service runs on the
+              matched Texas voter file — statewide programs and 420-character
+              texts include it.
+            </p>
+          </div>
+          <div className="service-grid">
+            {services.map((service) => {
+              const Icon = icons[service.icon]
+              return (
+                <article
+                  className={`service-card ${service.featured ? 'featured' : ''}`}
+                  key={service.title}
+                >
+                  <Icon
+                    className="service-icon"
+                    strokeWidth={1.7}
+                    aria-hidden="true"
+                  />
+                  <div className="service-body">
+                    <h3>{service.title}</h3>
+                    <p>{service.description}</p>
+                    <a
+                      className="rate-link"
+                      href={
+                        service.icon === 'message' || service.icon === 'mail'
+                          ? '#pricing'
+                          : '#contact'
+                      }
+                    >
+                      {service.rate}
+                    </a>
+                  </div>
+                </article>
+              )
+            })}
+          </div>
+        </div>
+      </section>
+
+      <section
+        className="section pricing-section"
+        id="pricing"
+        aria-labelledby="pricing-title"
+      >
+        <div className="site-container">
+          <div className="section-heading">
+            <p className="eyebrow">Simple pricing</p>
+            <h2 id="pricing-title">Text and email rates</h2>
+            <p>
+              The same per-message rate at any volume, whether you’re working a
+              county or the whole state. $500 minimum per program.
+            </p>
+          </div>
+          <div className="pricing-grid">
+            <article className="pricing-card">
+              <h3>
+                <MessageCircle aria-hidden="true" />
+                Text messaging
+              </h3>
+              <table>
+                <caption className="sr-only">
+                  Text messaging rates per message
+                </caption>
+                <tbody>
+                  {textRates.map((rate) => (
+                    <tr key={rate.label}>
+                      <th scope="row">{rate.label}</th>
+                      <td>
+                        {rate.rate}
+                        <span> / message</span>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+              <details className="pricing-notes">
+                <summary>
+                  Which message is right for your campaign?{' '}
+                  <Plus aria-hidden="true" />
+                </summary>
+                <div>
+                  {textRates.map((rate) => (
+                    <p key={rate.label}>
+                      <strong>{rate.label}:</strong> {rate.use}
+                    </p>
+                  ))}
+                  <p>{pricingCopy.textNote}</p>
+                  <p>{pricingCopy.mmsNote}</p>
+                </div>
+              </details>
+            </article>
+            <article className="pricing-card">
+              <h3>
+                <Mail aria-hidden="true" />
+                Email broadcasting
+              </h3>
+              <table>
+                <caption className="sr-only">Email broadcasting rates</caption>
+                <tbody>
+                  <tr>
+                    <th scope="row">
+                      First full-database send
+                      <small>8M+ addresses, 6M+ verified voters</small>
+                    </th>
+                    <td>$35,000</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Second send, same campaign</th>
+                    <td>$20,000</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Two full waves</th>
+                    <td>$55,000</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">
+                      Smaller universe
+                      <small>Plus one-time $0.01 per record data charge</small>
+                    </th>
+                    <td>
+                      $0.01<span> / email</span>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <p className="pricing-footnote">{pricingCopy.emailNote}</p>
+            </article>
+          </div>
+          <div className="pricing-accordions">
+            <details>
+              <summary>
+                Setup and compliance <Plus aria-hidden="true" />
+              </summary>
+              <p>{pricingCopy.setup}</p>
+            </details>
+            <details>
+              <summary>
+                Voter data for smaller universes <Plus aria-hidden="true" />
+              </summary>
+              <p>{pricingCopy.data}</p>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <section
+        className="section creative-section"
+        id="creative"
+        aria-labelledby="creative-title"
+      >
+        <div className="site-container">
+          <div className="section-heading">
+            <p className="eyebrow">Creative &amp; digital</p>
+            <h2 id="creative-title">
+              Everything else a campaign needs, from the same building
+            </h2>
+            <p>
+              The message needs something to link to, something to mail, and a
+              sign in the yard. We make all of it here — one shop, one invoice.
+            </p>
+          </div>
+          <div className="creative-grid">
+            {creativeServices.map((service) => (
+              <article
+                key={service.title}
+                className={`creative-card ${service.image === 'interview' ? 'featured' : ''}`}
+              >
+                <ReferencePhoto name={service.image} />
+                <div className="creative-card-body">
+                  <h3>{service.title}</h3>
+                  <p>{service.description}</p>
+                  <a className="rate-link" href="#contact">
+                    {service.rate}
+                  </a>
+                </div>
+              </article>
+            ))}
+          </div>
+          <div className="creative-extras">
+            <article className="extra-card">
+              <ReferencePhoto name="print" />
+              <div>
+                <h3>Print, mail, and signage</h3>
+                <p>{creativeCopy.print}</p>
+              </div>
+            </article>
+            <article className="extra-card">
+              <ReferencePhoto name="writing" />
+              <div>
+                <h3>We write the message</h3>
+                <p>{creativeCopy.writing}</p>
+              </div>
+            </article>
+            <article className="extra-card bundle-card">
+              <Star aria-hidden="true" fill="currentColor" />
+              <div>
+                <h3>The bundle</h3>
+                <p>{creativeCopy.bundle}</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section
+        className="section process-section"
+        id="process"
+        aria-labelledby="process-title"
+      >
+        <div className="site-container">
+          <p className="eyebrow eyebrow-light">How it works</p>
+          <h2 id="process-title">How a program comes together</h2>
+          <ol className="steps-grid">
+            {steps.map((step, index) => (
+              <li key={step.title}>
+                <span className="step-number" aria-hidden="true">
+                  0{index + 1}
+                </span>
+                <div>
+                  <h3>{step.title}</h3>
+                  <p>{step.text}</p>
+                </div>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      <section
+        className="section about-section"
+        id="about"
+        aria-labelledby="about-title"
+      >
+        <div className="site-container about-grid">
+          <figure>
+            <ReferencePhoto name="amarillo" />
+            <figcaption>Amarillo, Texas</figcaption>
+          </figure>
+          <div>
+            <p className="eyebrow">About Patriot Messaging</p>
+            <h2 id="about-title">
+              Run by the guy who moved a county 44 points
+            </h2>
+            {aboutCopy.map((paragraph) => (
+              <p className="about-paragraph" key={paragraph}>
+                {paragraph}
+              </p>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section
+        className="section contact-section"
+        id="contact"
+        aria-labelledby="contact-title"
+      >
+        <div className="site-container contact-grid">
+          <div className="contact-copy">
+            <p className="eyebrow">Get a quote</p>
+            <h2 id="contact-title">Get a quote</h2>
+            <p>
+              Tell us about the race and we’ll send a plan and a rate card. Most
+              quotes go out the same day.
+            </p>
+            <address>
+              <strong>Dan Rogers</strong>
+              <a href={`mailto:${siteConfig.contact.email}`}>
+                {siteConfig.contact.email}
+              </a>
+              <span>Patriot Messaging, LLC</span>
+              <span>1000 S. Jefferson Street</span>
+              <span>Amarillo, TX 79101</span>
+            </address>
+          </div>
+          <QuoteForm />
+        </div>
+      </section>
     </>
   )
 }
