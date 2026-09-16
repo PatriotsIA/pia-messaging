@@ -3,7 +3,7 @@ import { PageHeader } from '../components/ui/PageHeader'
 import { Card, CardGlow } from '../components/ui/Card'
 import { siteConfig } from '../config/site'
 
-const effective = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })
+const effective = siteConfig.legalRevisionDate
 
 export function PrivacyPage() {
   return (

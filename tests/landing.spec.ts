@@ -43,6 +43,7 @@ test('production HTML contains the complete page before JavaScript', async ({
   expect(html).toContain('Outside Texas, the data charge applies')
   expect(html).toContain('dan@patriotmessaging.com')
   expect(html).toContain('application/ld+json')
+  expect(html).toContain('data-prerendered-path="/"')
   const sitemap = await (await request.get('/sitemap.xml')).text()
   expect(sitemap).not.toContain('/messaging')
   expect(sitemap).not.toContain('/contact')
@@ -252,6 +253,8 @@ test('reduced motion suppresses the animated footer GIF', async ({ page }) => {
 test('legal pages retain the redesigned navigation and contact address', async ({
   page,
 }) => {
+  const errors: string[] = []
+  page.on('pageerror', (error) => errors.push(error.message))
   for (const path of ['/privacy', '/terms']) {
     await page.goto(path)
     await expect(page.getByRole('heading', { level: 1 })).toBeVisible()
@@ -260,6 +263,7 @@ test('legal pages retain the redesigned navigation and contact address', async (
       page.getByRole('link', { name: 'dan@patriotmessaging.com' }).first(),
     ).toBeVisible()
   }
+  expect(errors).toEqual([])
 })
 
 test('first-visit analytics choices fit on mobile and persist', async ({
@@ -289,4 +293,23 @@ test('first-visit analytics choices fit on mobile and persist', async ({
     await expect(panel).toHaveCount(0)
     await page.close()
   }
+})
+
+test('legal revision dates hydrate consistently after the build date', async ({ page }) => {
+  const errors: string[] = []
+  page.on('pageerror', (error) => errors.push(error.message))
+  await page.clock.setFixedTime(new Date('2027-01-01T12:00:00Z'))
+  // Exercise the actual legal-page HTML even when Vite preview falls back to
+  // the home document for an extensionless URL.
+  await page.route(/\/(privacy|terms)$/, async (route) => {
+    const pathname = new URL(route.request().url()).pathname
+    const response = await page.request.get(`${pathname}/index.html`)
+    expect(await response.text()).toContain(`data-prerendered-path="${pathname}"`)
+    await route.fulfill({ response })
+  })
+  await page.goto('/privacy')
+  await expect(page.getByText('Effective date: September 15, 2026')).toBeVisible()
+  await page.goto('/terms')
+  await expect(page.getByText('Last revised: September 15, 2026')).toBeVisible()
+  expect(errors).toEqual([])
 })

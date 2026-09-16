@@ -1,6 +1,7 @@
 export const siteConfig = {
   name: 'Patriot Messaging',
   legalName: 'Patriot Messaging, LLC',
+  legalRevisionDate: 'September 15, 2026',
   url: 'https://patriotmessaging.com',
   tagline: 'Always Ready. Always Connected.',
   description:

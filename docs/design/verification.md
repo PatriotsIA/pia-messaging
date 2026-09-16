@@ -2,8 +2,9 @@
 
 - `npm run lint`: passed.
 - `npm run build`: passed; landing and legal HTML pre-rendered.
-- `PLAYWRIGHT_CHROMIUM_EXECUTABLE=/usr/bin/chromium npm run test:e2e`: 18 passed.
+- `PLAYWRIGHT_CHROMIUM_EXECUTABLE=/usr/bin/chromium npm run test:e2e`: 19 passed.
 - Browser review: no page errors; no horizontal overflow.
+- Legal pages use a fixed revision date; a future browser clock is tested to prevent server/client date mismatches.
 - Responsive checks: 320, 390, 768, 1280, and 1920 pixels.
 - Quote tests intercept EmailJS requests, including success, failure, and retry. No email was sent.
 - Final screenshots: `coverage/design/desktop.png`, `mobile.png`, `mobile-top.png`, `mobile-first-visit.png`, `creative.png`, and `footer.png` (local review artifacts, ignored by Git).

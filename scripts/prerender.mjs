@@ -48,6 +48,7 @@ for (const route of routes) {
   const headMarkup = [head, extracted.headTags].filter(Boolean).join('\n')
   const html = stripTemplateSeo(template)
     .replace('</head>', `${headMarkup}\n  </head>`)
+    .replace('<div id="root">', `<div id="root" data-prerendered-path="${route}">`)
     .replace('<!--app-html-->', extracted.appHtml)
 
   const outDir = route === '/' ? distDir : path.join(distDir, route.replace(/^\//, ''))

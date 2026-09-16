@@ -4,7 +4,7 @@ import { PageHeader } from '../components/ui/PageHeader'
 import { Card, CardGlow } from '../components/ui/Card'
 import { siteConfig } from '../config/site'
 
-const lastRevised = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })
+const lastRevised = siteConfig.legalRevisionDate
 
 export function TermsPage() {
   return (
