@@ -25,16 +25,26 @@ template. The browser's legacy `to_email` parameter cannot override a fixed
 template recipient. Do not modify the shared support template used by other
 sites.
 
-After the template is saved, copy its actual template ID into
-`VITE_EMAILJS_TEMPLATE_ID` in this project's local `.env` and the **pia-messaging**
-Amplify app (`d14v9wv3biszlc`, `us-east-2`). Preserve the service ID, public key,
-site URL, and all other application settings. Rebuild and deploy `main`, because
-Vite embeds these values in the browser bundle at build time.
+Configure `VITE_EMAILJS_SERVICE_ID`, `VITE_EMAILJS_TEMPLATE_ID`, and
+`VITE_EMAILJS_PUBLIC_KEY` from the same EmailJS account in this project's local
+`.env` and the **pia-messaging** Amplify app (`d14v9wv3biszlc`, `us-east-2`). This
+template belongs to the Patriot Messaging account, so it requires that account's
+service and public key. Reusing the prior shared account's settings caused
+EmailJS to reject the template with `The template ID not found`.
+
+Preserve the site URL and all other application settings. Rebuild and deploy
+`main`, because Vite embeds these values in the browser bundle at build time.
 
 Verify the deployed form uses the new template ID and retains the visitor's email
 as `reply_to`. A successful EmailJS API response confirms acceptance of a request,
 not its destination mailbox or inbox delivery. Verify the template's recipient in
 the dashboard or its delivery history and confirm receipt with Dan. Send a live
 test only when explicitly authorized.
+
+If a live send returns `Outlook: Invalid grant. Please reconnect your Outlook
+account`, open this account's Email Services page, reconnect the Outlook account
+on the configured service, and save it. This provider authorization problem must
+be resolved in EmailJS; rebuilding the website does not restore the Outlook
+connection.
 
 Reference: [EmailJS template setup](https://www.emailjs.com/docs/tutorial/creating-email-template/).

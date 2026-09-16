@@ -50,6 +50,8 @@ VITE_EMAILJS_PUBLIC_KEY=
 
 Use the dedicated Patriot Messaging template **`template_do0b6qd`** with **To Email** fixed to `dan@patriotmessaging.com`, **Reply-To** set to `{{reply_to}}`, empty **CC/BCC**, and auto-reply disabled. The [template settings and email content](docs/emailjs/README.md) are maintained for reference. This repository does not provision EmailJS templates; recipient settings are managed in the EmailJS dashboard.
 
+The service ID, template ID, and public key must belong to the same EmailJS account. A template from a different account is rejected with `The template ID not found`, even when its ID is correct. Use the Patriot Messaging account settings in the local `.env` and Amplify environment.
+
 The template receives `name`, `title`, `message`, `time`, `to_email`, `reply_to`, `email`, `submitted_at`, and `page_url`. `to_email` remains for compatibility, but the dedicated template must use the fixed address above rather than that variable. Existing legacy contact-template fields are preserved. Sending failures keep the visitor's answers and allow retrying. Never commit private credentials.
 
 `VITE_SITE_URL` controls canonical URLs; the default is `https://patriotmessaging.com`.
@@ -75,4 +77,4 @@ Browser tests cover production hydration, static HTML, five viewport widths, anc
 
 Pushes to `PatriotsIA/pia-messaging` on `main` deploy through the existing AWS Amplify app **pia-messaging** (`d14v9wv3biszlc`, `us-east-2`). `amplify.yml` pins Node 22, builds the pre-rendered site, and publishes `dist`. The current hosting URL is `https://main.d14v9wv3biszlc.amplifyapp.com`.
 
-The EmailJS service and public key remain shared with `pia-counties`. This app uses its own `VITE_EMAILJS_TEMPLATE_ID=template_do0b6qd`. Preserve all other Amplify settings when updating the template ID and trigger a rebuild, because Vite embeds it in the browser bundle. Do not modify the shared support template or other sites' configuration. The service ID and public key are configured in the Amplify app environment and are not committed to Git.
+This app uses the Patriot Messaging EmailJS account's service and public key with `VITE_EMAILJS_TEMPLATE_ID=template_do0b6qd`. Update all three EmailJS settings together when changing accounts, preserve unrelated Amplify settings, and trigger a rebuild because Vite embeds them in the browser bundle. Do not modify the shared support template or other sites' configuration. The service ID and public key are configured in the Amplify app environment and are not committed to Git.
