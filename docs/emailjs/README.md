@@ -11,19 +11,24 @@ settings:
 | --- | --- |
 | Template name | Patriot Messaging contact |
 | Template ID | `template_do0b6qd` |
-| To Email | `dan@patriotmessaging.com` (literal address) |
+| To Email | `erik@patriotsinaction.com` (literal address) |
 | From Name | Patriot Messaging website |
 | From Email | Use the email service's default address |
 | Reply-To | `{{reply_to}}` |
 | Subject | `Patriot Messaging: {{title}}` |
-| CC / BCC | Empty |
+| CC | `dan@patriotsinaction.com` (literal address) |
+| BCC | Empty |
 | Auto-reply | Disabled |
 | Content | Paste `patriot-messaging-contact.html` into the HTML/code editor, or use `{{message}}` as a plain-text body |
 
 The recipient must be fixed in the dashboard. Do not use `{{to_email}}` in this
 template. The browser's legacy `to_email` parameter cannot override a fixed
-template recipient. Do not modify the shared support template used by other
-sites.
+template recipient. On September 21, the owner authorized all PIA brand public
+forms to reach both Erik and Dan and consolidated the other brands into this
+account. This replaces the earlier delivery-only-to-Patriot-Messaging setting;
+public contact links remain independent. The template subject is
+`Patriot Messaging: {{title}}`, and the saved body also includes the source URL
+and timestamp. Do not send verification email without separate authorization.
 
 Configure `VITE_EMAILJS_SERVICE_ID`, `VITE_EMAILJS_TEMPLATE_ID`, and
 `VITE_EMAILJS_PUBLIC_KEY` from the same EmailJS account in this project's local
