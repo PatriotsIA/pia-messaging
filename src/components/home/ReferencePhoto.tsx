@@ -1,25 +1,30 @@
-// These photo windows preserve the photography in the supplied visual reference.
-// The surrounding layout and all page text are responsive HTML.
+// Use supplied standalone artwork where available, with reference crops for
+// the remaining website and Amarillo photographs.
 const photos = {
   website: {
     viewBox: '47 1168 209 108',
     label: 'A campaign website on a laptop and phone',
   },
   camera: {
-    viewBox: '273 1168 211 108',
+    src: '/images/video-production.webp',
     label: 'Professional video camera in a production studio',
   },
   interview: {
-    viewBox: '503 1171 204 106',
-    label: 'Two chairs and microphones in an interview studio',
+    src: '/images/interview-studio.webp',
+    label: 'Two armchairs in an interview studio with a Texas Capitol backdrop',
   },
-  print: { viewBox: '47 1376 69 76', label: 'Printed campaign mailers' },
-  writing: { viewBox: '273 1376 62 76', label: 'A pen and a written message' },
+  print: {
+    src: '/images/campaign-print.webp',
+    label: 'Campaign mailers, brochures, a door hanger, and signage',
+  },
+  writing: {
+    src: '/images/writing-messaging.webp',
+    label: 'An open notebook, pen, and phone displaying text messages',
+  },
   amarillo: {
     viewBox: '47 1629 317 117',
     label: 'A historic red-brick building in Amarillo, Texas',
   },
-  capitol: { viewBox: '600 128 155 182', label: 'Texas State Capitol' },
 } as const
 
 export function ReferencePhoto({
@@ -32,6 +37,21 @@ export function ReferencePhoto({
   decorative?: boolean
 }) {
   const photo = photos[name]
+  if ('src' in photo) {
+    return (
+      <img
+        className={`reference-photo ${className}`}
+        src={photo.src}
+        alt={decorative ? '' : photo.label}
+        width={1536}
+        height={1024}
+        loading="lazy"
+        decoding="async"
+        aria-hidden={decorative || undefined}
+      />
+    )
+  }
+
   return (
     <svg
       className={`reference-photo ${className}`}

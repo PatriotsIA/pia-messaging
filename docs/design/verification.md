@@ -9,6 +9,17 @@
 - Quote tests intercept EmailJS requests, including success, failure, and retry. No email was sent.
 - Final screenshots: `coverage/design/desktop.png`, `mobile.png`, `mobile-top.png`, `mobile-first-visit.png`, `creative.png`, and `footer.png` (local review artifacts, ignored by Git).
 
-The site uses all supplied marketing copy. The longer copy and the full supplied logo change some section heights relative to the compact image reference. Reference photography is displayed from the supplied screenshot; original high-resolution photos can be substituted in `ReferencePhoto.tsx`.
+The site uses all supplied marketing copy. The longer copy and the full supplied logo change some section heights relative to the compact image reference. The hero, writing, print, interview, and video graphics use the standalone artwork supplied on September 17, 2026, compressed to WebP at its original dimensions. Candidate website and Amarillo building photography still use the supplied screenshot.
 
-The shared EmailJS browser settings from pia-counties are configured locally and in the existing Amplify app environment. The request supplies dan@patriotmessaging.com as the template recipient. The direct-send flow, errors, retries, and fallback are covered with intercepted requests; no test email was sent. The README documents template binding and deployment.
+The September 17 image refresh passed lint, the production build, and all 19 browser tests. Desktop (1440px) and mobile (390px) review confirmed that all five new images load, with no page errors or horizontal overflow. Image-review screenshots are in `coverage/image-refresh/` (ignored by Git).
+
+The project uses the Patriot Messaging EmailJS account and its dedicated template. The September 21 recipient settings are documented in [the template reference](../emailjs/README.md): To `erik@patriotsinaction.com` and CC `dan@patriotsinaction.com`. The browser still supplies the legacy `to_email` value `dan@patriotmessaging.com`; it does not override fixed dashboard recipients. Public contact links and the draft fallback retain that public address. The direct-send flow, errors, retries, and fallback are covered with intercepted requests; browser tests do not verify inbox delivery and no test email was sent.
+
+## September 21 preservation review (PIA-028)
+
+- Saved a protected archive and SHA-256 manifest of all 10 existing modified or untracked artwork files before making changes; archive contents verified against the manifest.
+- Preserved all three existing application edits and all five WebP files byte for byte. Only README and verification prose were amended during the preservation review to match the committed September 21 email-template documentation and record these checks.
+- Node 22.23.2: lint, production build, and all 19 existing Playwright checks passed. The build used dummy EmailJS settings, and browser tests intercepted provider requests.
+- Fresh hero, services, and creative-section screenshots at 1440 and 390 pixels are in `coverage/image-refresh/{desktop,mobile}-{hero,services,creative}.png`; the image-load report is `coverage/image-refresh/review.json`. All five WebPs loaded, with no page errors or horizontal overflow.
+- The modified text files were checked for private credentials; no credential patterns were found. Environment files, dependencies, generated bundles, and local review artifacts are excluded from the commit.
+- Amplify readback showed only the production `main` branch, with automatic branch creation and pull-request previews disabled. The artwork is preserved on `review/pia-028-artwork-preservation`; merging into `main` triggers the existing Amplify deployment. No deployment or provider email was sent during this review.

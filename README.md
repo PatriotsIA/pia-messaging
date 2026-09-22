@@ -32,11 +32,11 @@ The PDF's detailed service tables provide the displayed voter-data, website, com
 
 The supplied logo and original animated GIF are in `public/brand`. The GIF is omitted when reduced motion is requested. Barlow Condensed and Source Sans 3 are served locally from `public/fonts`.
 
-Photography comes from the supplied screenshot, displayed through SVG photo windows in `ReferencePhoto.tsx`. The original 756 × 2079 reference is stored unchanged in `public/images/design-reference.png`; the rest of the page is real HTML and CSS. Higher-resolution original photographs can replace these windows when available. The building photo is the image shown in the reference, not independent verification of the business premises.
+The hero, message writing, print materials, interview studio, and video production graphics use the supplied standalone artwork, compressed as full-resolution WebP files in `public/images`. The hero loads with high priority; the service graphics load lazily. `ReferencePhoto.tsx` still uses SVG photo windows from `public/images/design-reference.png` for the candidate website and Amarillo building. The building photo is the image shown in the reference, not independent verification of the business premises.
 
 ## Quote delivery
 
-Quote requests are addressed to **dan@patriotmessaging.com**.
+Direct quote submissions use the dedicated EmailJS template with **To Email** fixed to **erik@patriotsinaction.com** and **CC** fixed to **dan@patriotsinaction.com**, as documented in the [template settings](docs/emailjs/README.md). Public contact links and the email-draft fallback continue to use **dan@patriotmessaging.com**.
 
 Without an email provider, submitting opens a populated draft in the visitor's email application. The page explicitly asks the visitor to send the draft and retains their answers; it does not claim delivery.
 
@@ -48,11 +48,11 @@ VITE_EMAILJS_TEMPLATE_ID=template_do0b6qd
 VITE_EMAILJS_PUBLIC_KEY=
 ```
 
-Use the dedicated Patriot Messaging template **`template_do0b6qd`** with **To Email** fixed to `dan@patriotmessaging.com`, **Reply-To** set to `{{reply_to}}`, empty **CC/BCC**, and auto-reply disabled. The [template settings and email content](docs/emailjs/README.md) are maintained for reference. This repository does not provision EmailJS templates; recipient settings are managed in the EmailJS dashboard.
+Use the dedicated Patriot Messaging template **`template_do0b6qd`** with **To Email** fixed to `erik@patriotsinaction.com`, **CC** fixed to `dan@patriotsinaction.com`, **Reply-To** set to `{{reply_to}}`, empty **BCC**, and auto-reply disabled. The [template settings and email content](docs/emailjs/README.md) are maintained for reference. This repository does not provision EmailJS templates; recipient settings are managed in the EmailJS dashboard.
 
 The service ID, template ID, and public key must belong to the same EmailJS account. A template from a different account is rejected with `The template ID not found`, even when its ID is correct. Use the Patriot Messaging account settings in the local `.env` and Amplify environment.
 
-The template receives `name`, `title`, `message`, `time`, `to_email`, `reply_to`, `email`, `submitted_at`, and `page_url`. `to_email` remains for compatibility, but the dedicated template must use the fixed address above rather than that variable. Existing legacy contact-template fields are preserved. Sending failures keep the visitor's answers and allow retrying. Never commit private credentials.
+The template receives `name`, `title`, `message`, `time`, `to_email`, `reply_to`, `email`, `submitted_at`, and `page_url`. `to_email` remains for compatibility, but the dedicated template must use the fixed recipients above rather than that variable. Existing legacy contact-template fields are preserved. Sending failures keep the visitor's answers and allow retrying. Never commit private credentials.
 
 `VITE_SITE_URL` controls canonical URLs; the default is `https://patriotmessaging.com`.
 
