@@ -1,5 +1,5 @@
 import { useRef, useState, type FormEvent } from 'react'
-import { ArrowRight, CheckCircle2, LoaderCircle, Mail } from 'lucide-react'
+import { ArrowRight, CheckCircle2, ChevronDown, LoaderCircle, Mail } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { quoteOptions } from '../../config/content'
 import { siteConfig } from '../../config/site'
@@ -10,6 +10,8 @@ export function QuoteForm() {
     'idle' | 'sending' | 'sent' | 'draft' | 'error'
   >('idle')
   const [draftUrl, setDraftUrl] = useState('')
+  const [interests, setInterests] = useState<string[]>([])
+  const productPicker = useRef<HTMLDetailsElement>(null)
   const inFlight = useRef(false)
 
   async function submit(event: FormEvent<HTMLFormElement>) {
@@ -22,7 +24,7 @@ export function QuoteForm() {
       name: String(fields.get('name') ?? '').trim(),
       email: String(fields.get('email') ?? '').trim(),
       race: String(fields.get('race') ?? '').trim(),
-      interest: String(fields.get('interest') ?? '').trim(),
+      interest: fields.getAll('interest').map(String).join(', '),
       message: String(fields.get('message') ?? '').trim(),
     }
     if (!data.name) {
@@ -50,6 +52,8 @@ export function QuoteForm() {
       })
       setStatus('sent')
       form.reset()
+      setInterests([])
+      if (productPicker.current) productPicker.current.open = false
     } catch {
       setStatus('error')
     } finally {
@@ -93,17 +97,46 @@ export function QuoteForm() {
           maxLength={200}
         />
       </label>
-      <label htmlFor="quote-interest">
-        What you’re interested in
-        <select id="quote-interest" name="interest" defaultValue="">
-          <option value="" disabled>
-            Select an option
-          </option>
-          {quoteOptions.map((option) => (
-            <option key={option}>{option}</option>
-          ))}
-        </select>
-      </label>
+      <fieldset className="quote-interests">
+        <legend>What you’re interested in</legend>
+        <details
+          className="product-picker"
+          ref={productPicker}
+          onKeyDown={(event) => {
+            if (event.key === 'Escape') {
+              event.currentTarget.open = false
+              event.currentTarget.querySelector('summary')?.focus()
+            }
+          }}
+        >
+          <summary>
+            <span>{interests.length ? interests.join(', ') : 'Select products'}</span>
+            <ChevronDown aria-hidden="true" />
+          </summary>
+          <div className="product-options">
+            <p>Choose all that apply.</p>
+            {quoteOptions.map((option) => (
+              <label key={option}>
+                <input
+                  type="checkbox"
+                  name="interest"
+                  value={option}
+                  checked={interests.includes(option)}
+                  onChange={(event) => {
+                    const checked = event.currentTarget.checked
+                    setInterests((previous) =>
+                      quoteOptions.filter((product) =>
+                        product === option ? checked : previous.includes(product),
+                      ),
+                    )
+                  }}
+                />
+                <span>{option}</span>
+              </label>
+            ))}
+          </div>
+        </details>
+      </fieldset>
       <label htmlFor="quote-message">
         Anything else
         <textarea

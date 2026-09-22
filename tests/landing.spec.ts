@@ -10,11 +10,14 @@ async function settleFonts(page: Page) {
 
 async function fillQuote(page: Page) {
   await page.getByLabel('Name', { exact: true }).fill('Website QA')
-  await page.getByLabel('Email', { exact: true }).fill('qa@example.com')
+  await page.getByRole('textbox', { name: 'Email', exact: true }).fill('qa@example.com')
   await page.getByLabel('Race or campaign').fill('Example county race')
-  await page
-    .getByLabel('What you’re interested in')
-    .selectOption('Text messaging')
+  const products = page.getByRole('group', { name: 'What you’re interested in' })
+  await products.locator('summary').click()
+  for (const product of ['Text messaging', 'Email', 'Digital ads']) {
+    await products.getByRole('checkbox', { name: product, exact: true }).check()
+  }
+  await products.locator('summary').click()
   await page
     .getByLabel('Anything else')
     .fill('A sample request used only in an intercepted browser test.')
@@ -75,7 +78,7 @@ test('loads without runtime or hydration errors and uses local brand assets', as
   expect(failures).toEqual([])
 })
 
-for (const width of [320, 390, 768, 1280, 1920]) {
+for (const width of [320, 390, 768, 960, 1050, 1280, 1920]) {
   test(`responsive layout fits at ${width}px`, async ({ page }) => {
     await page.setViewportSize({ width, height: 900 })
     await page.goto('/')
@@ -88,8 +91,40 @@ for (const width of [320, 390, 768, 1280, 1920]) {
     const phone = await page.locator('.phone').boundingBox()
     expect(phone!.x).toBeGreaterThanOrEqual(0)
     expect(phone!.x + phone!.width).toBeLessThanOrEqual(width)
+    const callLink = page.locator('header').getByRole('link', { name: '866-756-1776' })
+    await expect(callLink).toBeVisible()
+    await expect(callLink).toHaveAttribute('href', 'tel:+18667561776')
+    const callBox = await callLink.boundingBox()
+    expect(callBox!.x).toBeGreaterThanOrEqual(0)
+    expect(callBox!.x + callBox!.width).toBeLessThanOrEqual(width)
   })
 }
+
+test('product dropdown supports multiple choices, deselection, and keyboard dismissal on mobile', async ({ page }) => {
+  await page.setViewportSize({ width: 320, height: 900 })
+  await page.goto('/#contact')
+  const products = page.getByRole('group', { name: 'What you’re interested in' })
+  const summary = products.locator('summary')
+  await summary.focus()
+  await page.keyboard.press('Enter')
+  const text = products.getByRole('checkbox', { name: 'Text messaging', exact: true })
+  const email = products.getByRole('checkbox', { name: 'Email', exact: true })
+  await text.focus()
+  await page.keyboard.press('Space')
+  await email.check()
+  await expect(summary).toHaveText('Text messaging, Email')
+  await text.uncheck()
+  await page.keyboard.press('Escape')
+  await expect(summary).toBeFocused()
+  await expect(summary).toHaveText('Email')
+  await expect(email).toBeHidden()
+  await summary.click()
+  await expect(email).toBeChecked()
+  await expect(text).not.toBeChecked()
+  await email.uncheck()
+  await expect(summary).toHaveText('Select products')
+  expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(320)
+})
 
 test('section links and keyboard pricing disclosures work', async ({
   page,
@@ -177,13 +212,15 @@ test('required fields validate and the email fallback never claims delivery', as
     .getAttribute('href')
   expect(draft).toMatch(/^mailto:dan@patriotmessaging.com\?/)
   expect(decodeURIComponent(draft!)).toContain('Example county race')
+  expect(decodeURIComponent(draft!)).toContain('Interested in: Text messaging, Email, Digital ads')
+  await expect(page.locator('.product-picker summary')).toHaveText('Text messaging, Email, Digital ads')
   await expect(page.getByLabel('Name', { exact: true })).toHaveValue(
     'Website QA',
   )
   await expect(page.getByText('Request sent.', { exact: false })).toHaveCount(0)
 })
 
-test('configured email submission routes to Dan and reports success only after acceptance', async ({
+test('configured email submission includes every product and resets only after acceptance', async ({
   page,
 }) => {
   let payload: Record<string, unknown> | undefined
@@ -205,18 +242,25 @@ test('configured email submission routes to Dan and reports success only after a
     reply_to: 'qa@example.com',
     email: 'qa@example.com',
     page_url: 'http://127.0.0.1:5181/#contact',
+    message: expect.stringContaining('interest: Text messaging, Email, Digital ads'),
   })
   await expect(page.getByLabel('Name', { exact: true })).toHaveValue('')
+  const products = page.getByRole('group', { name: 'What you’re interested in' })
+  await expect(products.locator('summary')).toHaveText('Select products')
+  await products.locator('summary').click()
+  await expect(products.locator('input:checked')).toHaveCount(0)
 })
 
 test('email failure keeps answers and lets the visitor retry', async ({
   page,
 }) => {
   let requests = 0
+  const messages: string[] = []
   await page.route(
     'https://api.emailjs.com/api/v1.0/email/send',
     async (route) => {
       requests++
+      messages.push(route.request().postDataJSON().template_params.message)
       await route.fulfill({
         status: requests === 1 ? 500 : 200,
         body: requests === 1 ? 'Failed' : 'OK',
@@ -232,11 +276,16 @@ test('email failure keeps answers and lets the visitor retry', async ({
   await expect(page.getByLabel('Race or campaign')).toHaveValue(
     'Example county race',
   )
+  await expect(page.locator('.product-picker summary')).toHaveText('Text messaging, Email, Digital ads')
   await page.getByRole('button', { name: 'Send request' }).click()
   await expect(
     page.getByText('Request sent. Thank you — Dan will be in touch.'),
   ).toBeVisible()
   expect(requests).toBe(2)
+  expect(messages).toHaveLength(2)
+  for (const message of messages) {
+    expect(message).toContain('interest: Text messaging, Email, Digital ads')
+  }
 })
 
 test('reduced motion suppresses the animated footer GIF', async ({ page }) => {

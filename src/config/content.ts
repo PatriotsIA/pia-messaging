@@ -37,7 +37,7 @@ export const services = [
     icon: 'phone',
     description:
       'Your recorded message lands directly in voicemail without ringing the phone. No 10DLC registration needed.',
-    rate: 'Contact for quote',
+    rate: '$0.08 per voicemail under 30 seconds, plus a $150 setup fee',
     featured: false,
   },
   {
@@ -45,7 +45,7 @@ export const services = [
     icon: 'chart',
     description:
       'IP-targeted banner ads to matched voter households, plus social, Google Display, YouTube, and streaming TV.',
-    rate: 'Contact for quote',
+    rate: '$30 per 1,000 impressions',
     featured: false,
   },
   {

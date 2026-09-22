@@ -2,10 +2,10 @@
 
 - `npm run lint`: passed.
 - `npm run build`: passed; landing and legal HTML pre-rendered.
-- `PLAYWRIGHT_CHROMIUM_EXECUTABLE=/usr/bin/chromium npm run test:e2e`: 19 passed.
+- `PLAYWRIGHT_CHROMIUM_EXECUTABLE=/usr/bin/chromium npm run test:e2e`: 22 passed.
 - Browser review: no page errors; no horizontal overflow.
 - Legal pages use a fixed revision date; a future browser clock is tested to prevent server/client date mismatches.
-- Responsive checks: 320, 390, 768, 1280, and 1920 pixels.
+- Responsive checks: 320, 390, 768, 960, 1050, 1280, and 1920 pixels.
 - Quote tests intercept EmailJS requests, including success, failure, and retry. No email was sent.
 - Final screenshots: `coverage/design/desktop.png`, `mobile.png`, `mobile-top.png`, `mobile-first-visit.png`, `creative.png`, and `footer.png` (local review artifacts, ignored by Git).
 
@@ -23,3 +23,12 @@ The project uses the Patriot Messaging EmailJS account and its dedicated templat
 - Fresh hero, services, and creative-section screenshots at 1440 and 390 pixels are in `coverage/image-refresh/{desktop,mobile}-{hero,services,creative}.png`; the image-load report is `coverage/image-refresh/review.json`. All five WebPs loaded, with no page errors or horizontal overflow.
 - The modified text files were checked for private credentials; no credential patterns were found. Environment files, dependencies, generated bundles, and local review artifacts are excluded from the commit.
 - Amplify readback showed only the production `main` branch, with automatic branch creation and pull-request previews disabled. The artwork is preserved on `review/pia-028-artwork-preservation`; merging into `main` triggers the existing Amplify deployment. No deployment or provider email was sent during this review.
+
+## September 22 contact and pricing update
+
+- Added `866-756-1776` as a `tel:+18667561776` link in the desktop/mobile header and contact section.
+- Replaced the single-product select with a checkbox dropdown. Verified multiple selections and deselection, keyboard operation and Escape dismissal, every selected product in both the EmailJS payload and email draft, retained selections after a failed send, and reset only after successful submission.
+- Digital ads display $30 per 1,000 impressions. Ringless voicemail displays $0.08 per voicemail under 30 seconds, plus a $150 setup fee.
+- Lint, production build, and all 22 browser checks passed. EmailJS requests were intercepted; these checks do not send messages or verify inbox receipt.
+- Header and open-dropdown screenshots at 320, 390, 768, and 1280 pixels are in `coverage/contact-pricing/` (ignored by Git). No horizontal overflow or browser page errors were found.
+- Read `tracker-context pia --project pia-messaging` before editing and added the PIA tracker workflow to the README for future work.

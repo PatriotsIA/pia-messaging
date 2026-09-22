@@ -2,6 +2,10 @@
 
 A React, TypeScript, and Vite single-page website based on the September 2026 design reference and approved PDF copy.
 
+## Project context
+
+Before working on this site, run `tracker-context pia --project pia-messaging` for the PIA tracker's current commits, deployments, issues, and queued actions. The tracker lives at `~/Projects/PIA/pia-tracker`; the workstation's `project-trackers` skill documents its data and update rules. Never print or commit tracker credentials.
+
 ## Development
 
 Requires Node.js 22 or newer.
@@ -18,6 +22,8 @@ The build generates HTML for the landing page and legal pages, so the marketing 
 ## Page and copy
 
 The landing page contains Hero, Services, Pricing, Creative & digital, How it works, About, and Get a quote, followed by the branded footer. Navigation uses section anchors. Old `/services`, `/messaging`, and `/contact` URLs display the landing page and navigate to the matching section. `/privacy` and `/terms` remain accessible.
+
+The header and contact section show a clickable **866-756-1776**. The quote form supports multiple products through a checkbox dropdown and includes every selected product in both direct submissions and email drafts. Digital ads are **$30 per 1,000 impressions**; ringless voicemail is **$0.08 per voicemail under 30 seconds, plus a $150 setup fee**, per the September 22 update.
 
 - `src/config/content.ts`: approved marketing copy and rates.
 - `src/pages/HomePage.tsx`: page composition.

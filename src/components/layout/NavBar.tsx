@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import { Menu, X } from 'lucide-react'
+import { Menu, Phone, X } from 'lucide-react'
+import { siteConfig } from '../../config/site'
 
 const navigation = [
   ['services', 'Services'],
@@ -52,13 +53,23 @@ export function NavBar() {
             </a>
           ))}
         </nav>
-        <a
-          className="button button-primary header-quote"
-          href={anchor('contact')}
-          onClick={() => setOpen(false)}
-        >
-          Get a quote
-        </a>
+        <div className="header-actions">
+          <a
+            className="header-phone"
+            href={`tel:${siteConfig.contact.phoneDial}`}
+            onClick={() => setOpen(false)}
+          >
+            <Phone aria-hidden="true" />
+            {siteConfig.contact.phone}
+          </a>
+          <a
+            className="button button-primary header-quote"
+            href={anchor('contact')}
+            onClick={() => setOpen(false)}
+          >
+            Get a quote
+          </a>
+        </div>
         <button
           className="menu-toggle"
           ref={toggle}

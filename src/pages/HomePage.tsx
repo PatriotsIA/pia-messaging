@@ -372,6 +372,9 @@ export function HomePage() {
             </p>
             <address>
               <strong>Dan Rogers</strong>
+              <a href={`tel:${siteConfig.contact.phoneDial}`}>
+                {siteConfig.contact.phone}
+              </a>
               <a href={`mailto:${siteConfig.contact.email}`}>
                 {siteConfig.contact.email}
               </a>

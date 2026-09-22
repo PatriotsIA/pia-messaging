@@ -9,7 +9,7 @@ export const siteConfig = {
   contact: {
     email: 'dan@patriotmessaging.com',
     /** Display (after "Phone: " in UI where labeled) */
-    phone: '(866) 756 1776',
+    phone: '866-756-1776',
     /** E.164 for <a href="tel:..."> */
     phoneDial: '+18667561776',
     mailingAddress: '1000 S. Jefferson Street, Amarillo, TX 79101',
