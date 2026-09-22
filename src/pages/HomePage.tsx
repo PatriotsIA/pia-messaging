@@ -44,8 +44,15 @@ export function HomePage() {
         jsonLd={[organizationJsonLd(), websiteJsonLd()]}
       />
       <section className="hero-section" id="top" aria-labelledby="hero-title">
-        <div className="hero-ribbon" aria-hidden="true" />
-        <ReferencePhoto name="capitol" className="hero-capitol" decorative />
+        <img
+          className="hero-background"
+          src="/images/hero-capitol.webp"
+          alt=""
+          width={2172}
+          height={724}
+          fetchPriority="high"
+          aria-hidden="true"
+        />
         <div className="site-container hero-layout">
           <div className="hero-copy">
             <p className="eyebrow eyebrow-light">
