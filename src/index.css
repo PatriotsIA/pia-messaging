@@ -884,14 +884,21 @@ details[open] > summary svg {
   gap: 50px;
   align-items: start;
 }
-.about-grid figure {
+.about-figures {
   position: sticky;
   top: 144px;
   margin-top: 3px;
+  display: grid;
+  gap: 18px;
 }
 .about-grid figure .reference-photo {
   border-radius: 5px;
-  aspect-ratio: 2.7;
+}
+.about-figure-office .reference-photo {
+  aspect-ratio: 1.97;
+}
+.about-figure-studio .reference-photo {
+  aspect-ratio: 1.29;
 }
 .about-grid figcaption {
   font-size: 12px;
@@ -1336,8 +1343,11 @@ details[open] > summary svg {
     grid-template-columns: 1fr;
     gap: 22px;
   }
-  .about-grid figure {
+  .about-figures {
     position: static;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    align-items: center;
   }
   .contact-grid {
     gap: 40px;
@@ -1527,9 +1537,6 @@ details[open] > summary svg {
   .about-grid {
     grid-template-columns: 1fr;
     gap: 25px;
-  }
-  .about-grid figure {
-    position: static;
   }
   .about-grid h2 {
     font-size: 35px;

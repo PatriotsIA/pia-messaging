@@ -336,10 +336,16 @@ export function HomePage() {
         aria-labelledby="about-title"
       >
         <div className="site-container about-grid">
-          <figure>
-            <ReferencePhoto name="amarillo" />
-            <figcaption>Amarillo, Texas</figcaption>
-          </figure>
+          <div className="about-figures">
+            <figure className="about-figure-office">
+              <ReferencePhoto name="amarillo" />
+              <figcaption>Amarillo Office</figcaption>
+            </figure>
+            <figure className="about-figure-studio">
+              <ReferencePhoto name="studio" />
+              <figcaption>Patriot Recording Studio</figcaption>
+            </figure>
+          </div>
           <div>
             <p className="eyebrow">About Patriot Messaging</p>
             <h2 id="about-title">
