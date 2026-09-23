@@ -47,3 +47,10 @@ The project uses the Patriot Messaging EmailJS account and its dedicated templat
 - Added the supplied Court of Criminal Appeals sentence beneath the first-send label. The newer About copy and artwork are preserved.
 - Lint, production build, and all 22 existing browser checks passed. Provider requests were intercepted during tests.
 - Browser review confirmed all three rows and prices at 320 and 1280 pixels, with no horizontal overflow or runtime errors. Review screenshots are in `coverage/email-pricing/` (ignored by Git).
+
+## September 23 final pricing and punctuation update
+
+- Restored Smaller universe at $0.01 per email, with the one-time $0.01 per record data charge beneath the label.
+- Added “6 million + Verified Voter Emails” beneath the first full-database send label, retaining its supplied explanatory sentence.
+- Added spaces around the em dash before “so the people writing” in the About paragraph.
+- Lint, production build, and all 22 existing browser checks passed. Review at 320 and 1280 pixels confirmed the four pricing rows and dash spacing, without horizontal overflow or runtime errors. Updated screenshots are in `coverage/email-pricing/` (ignored by Git).

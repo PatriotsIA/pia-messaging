@@ -171,7 +171,7 @@ const aboutClosing: readonly { text: string; href?: string }[] = [
   { text: ', and ' },
   { text: 'The Ballot Box', href: siteConfig.links.theBallotBox },
   {
-    text: '—so the people writing your messages talk to voters every day, from all over the country.',
+    text: ' — so the people writing your messages talk to voters every day, from all over the country.',
   },
 ]
 

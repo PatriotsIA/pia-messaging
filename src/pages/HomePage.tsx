@@ -208,6 +208,7 @@ export function HomePage() {
                   <tr>
                     <th scope="row">
                       First full-database send
+                      <small>6 million + Verified Voter Emails</small>
                       <small>
                         This is the send that carried the 2024 Court of Criminal Appeals challengers.
                       </small>
@@ -221,6 +222,15 @@ export function HomePage() {
                   <tr>
                     <th scope="row">Both waves booked together</th>
                     <td>$50,000</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">
+                      Smaller universe
+                      <small>(plus one-time $0.01 per record data charge)</small>
+                    </th>
+                    <td>
+                      $0.01<span> / email</span>
+                    </td>
                   </tr>
                 </tbody>
               </table>
