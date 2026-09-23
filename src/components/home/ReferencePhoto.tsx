@@ -1,9 +1,9 @@
-// Use supplied standalone artwork where available, with reference crops for
-// the remaining website and Amarillo photographs.
+// Use supplied standalone artwork where available; the Amarillo photograph is
+// still a crop from the design reference sheet until a full-size one arrives.
 const photos = {
   website: {
-    viewBox: '47 1168 209 108',
-    label: 'A campaign website on a laptop and phone',
+    src: '/images/campaign-website.webp',
+    label: 'A campaign website on a desktop monitor and a phone',
   },
   camera: {
     src: '/images/video-production.webp',
