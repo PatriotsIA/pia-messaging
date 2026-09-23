@@ -40,7 +40,7 @@ The PDF's detailed service tables provide the displayed voter-data, website, com
 
 The supplied logo and original animated GIF are in `public/brand`. The GIF is omitted when reduced motion is requested. Barlow Condensed and Source Sans 3 are served locally from `public/fonts`.
 
-The hero, message writing, print materials, interview studio, and video production graphics use the supplied standalone artwork, compressed as full-resolution WebP files in `public/images`. The hero loads with high priority; the service graphics load lazily. `ReferencePhoto.tsx` also serves local WebP files for the candidate website, Amarillo office, and Patriot Recording Studio. The About section's studio photo uses the September 23 supplied photograph, optimized to 1600 × 1200 with its full 4:3 composition preserved.
+The hero, message writing, print materials, interview studio, and video production graphics use the supplied standalone artwork, compressed as full-resolution WebP files in `public/images`. The hero loads with high priority; the service graphics load lazily. `ReferencePhoto.tsx` also serves local images for the candidate website, Amarillo office, and Patriot Recording Studio. The About section's studio photo uses the latest September 23 supplied JPEG at its original 1200 × 900 resolution, with its full 4:3 composition preserved.
 
 ## Quote delivery
 

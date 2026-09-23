@@ -31,8 +31,8 @@ const photos = {
     label: 'The Patriot Messaging office building in Amarillo, Texas',
   },
   studio: {
-    src: '/images/patriot-recording-studio-photo.webp',
-    size: [1600, 1200],
+    src: '/images/patriot-recording-studio-photo.jpg',
+    size: [1200, 900],
     label:
       'Two chairs and microphones at a round table in the Patriot Recording Studio, with a bison sculpture and American and Texas flags',
   },

@@ -61,3 +61,5 @@ The project uses the Patriot Messaging EmailJS account and its dedicated templat
 - Updated the intrinsic dimensions, display aspect ratio, and description of the bison sculpture. The caption remains “Patriot Recording Studio.”
 - Lint, production build, and all eight existing image-loading and responsive-layout checks passed.
 - Browser review at 390 and 1280 pixels confirmed the new image loads, matches the local asset's SHA-256 hash, and preserves its aspect ratio, with no horizontal overflow or runtime errors. Screenshots are in `coverage/studio-update/` (ignored by Git).
+
+The later September 23 replacement uses the user's latest 1200 × 900 JPEG unchanged (SHA-256 `e1e9f0f2b3d559b3709dcb12712de9e0e09385429bffbfc9848a75d10e9c0211`). Its new `.jpg` URL replaces the earlier WebP. Lint, production build, the eight existing image/layout checks, and the mobile/desktop image review all passed again.
