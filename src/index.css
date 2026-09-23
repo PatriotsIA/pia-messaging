@@ -880,12 +880,13 @@ details[open] > summary svg {
 
 .about-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 0.72fr 1.28fr;
   gap: 50px;
-  align-items: center;
+  align-items: start;
 }
 .about-grid figure {
-  align-self: start;
+  position: sticky;
+  top: 144px;
   margin-top: 3px;
 }
 .about-grid figure .reference-photo {
@@ -904,6 +905,66 @@ details[open] > summary svg {
   font-size: 16px;
   line-height: 1.45;
   margin-top: 13px;
+}
+.about-paragraph a {
+  color: var(--navy);
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: rgb(31 56 100 / 35%);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+}
+.about-paragraph a:hover {
+  color: var(--red);
+  text-decoration-color: rgb(192 0 0 / 45%);
+}
+.about-quote {
+  margin: 18px 0 0;
+  padding-left: 17px;
+  border-left: 3px solid var(--red);
+}
+.about-quote p {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 25px;
+  line-height: 1.15;
+  color: var(--navy);
+}
+.about-quote cite {
+  display: block;
+  margin-top: 6px;
+  color: var(--muted);
+  font-size: 13px;
+  font-style: normal;
+  letter-spacing: 0.04em;
+}
+.about-record {
+  margin: 20px 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 12px;
+}
+.about-record li {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 12px;
+}
+.about-record-year {
+  font-family: var(--font-display);
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--red);
+  white-space: nowrap;
+}
+.about-record p {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.4;
+}
+.about-record strong {
+  color: var(--navy);
 }
 .contact-grid {
   display: grid;
@@ -1272,7 +1333,11 @@ details[open] > summary svg {
     right: -21px;
   }
   .about-grid {
-    gap: 30px;
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+  .about-grid figure {
+    position: static;
   }
   .contact-grid {
     gap: 40px;
@@ -1463,11 +1528,23 @@ details[open] > summary svg {
     grid-template-columns: 1fr;
     gap: 25px;
   }
+  .about-grid figure {
+    position: static;
+  }
   .about-grid h2 {
     font-size: 35px;
   }
   .about-paragraph {
     font-size: 17px;
+  }
+  .about-quote p {
+    font-size: 23px;
+  }
+  .about-record li {
+    gap: 9px;
+  }
+  .about-record p {
+    font-size: 16px;
   }
   .contact-grid {
     grid-template-columns: 1fr;

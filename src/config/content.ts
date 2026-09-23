@@ -1,5 +1,7 @@
 // Approved September 2026 copy; see docs/design/website-copy.txt.
 
+import { siteConfig } from './site'
+
 export const heroCopy = {
   intro:
     'Text, email, voicemail, digital ads, mail, print, and video for Republican and conservative campaigns, bond issues, and recalls — statewide down to a single county, in Texas and all 50 states. Texas voter data is included.',
@@ -148,10 +150,68 @@ export const steps = [
   },
 ] as const
 
-export const aboutCopy = [
-  "In 2018, Dan Rogers looked at the Cruz race and didn't like what he saw coming in West Texas. So he worked out how to talk to voters by text and email in a way that got them to show up — and his home county moved 44 points toward Republicans in a year when almost every other county in Texas moved the other way. A national strategist called it a world record. That method is what Patriot Messaging sells.",
-  'Dan is a Texas Panhandle rancher and businessman, a county Republican chairman, and an election-integrity author. Patriot Messaging works out of a restored historic building in downtown Amarillo that also houses Patriots in Action, The County Post, MyLocalGOP.com, and The Ballot Box, now in development — so the people writing your messages are talking to voters every day, from all over the country.',
-] as const
+/**
+ * Closing paragraph of the about section, split so the sister operations and
+ * the book can carry links. A segment with an empty or missing `href` renders
+ * as plain text.
+ */
+const aboutClosing: readonly { text: string; href?: string }[] = [
+  { text: 'Dan is a Texas Panhandle cattleman and the author of ' },
+  { text: 'Operation Show-Up', href: siteConfig.links.operationShowUp },
+  {
+    text: '. Patriot Messaging works out of a restored historic building in downtown Amarillo that also houses ',
+  },
+  { text: 'GOPConnect', href: siteConfig.links.gopConnect },
+  { text: ', ' },
+  { text: 'Patriots in Action', href: siteConfig.links.patriotsInAction },
+  { text: ', ' },
+  { text: 'MyLocalGOP', href: siteConfig.links.myLocalGop },
+  { text: ', ' },
+  { text: 'The County Post', href: siteConfig.links.theCountyPost },
+  { text: ', and ' },
+  { text: 'The Ballot Box', href: siteConfig.links.theBallotBox },
+  {
+    text: '—so the people writing your messages talk to voters every day, from all over the country.',
+  },
+]
+
+export const aboutCopy = {
+  intro:
+    "In 2018, Dan Rogers looked at the Cruz race and didn't like what he saw coming in West Texas. So he worked out how to talk to voters by text and email in a way that got them to show up — and his home county moved 44 points toward Republicans in a year when almost every other county in Texas moved the other way.",
+  pullQuote: {
+    text: 'Messaging is my sport.',
+    attribution: 'Dan Rogers',
+  },
+  /** Each entry renders as "<year> — <race>. <text>" */
+  record: [
+    {
+      year: '2020',
+      race: 'Congressional runoff',
+      text: "Ronny Jackson came out of the primary at 19 percent, twenty points behind the retiring incumbent's hand-picked successor, with no campaign on the ground. A text-and-email program with a recorded interview turned the runoff, and Jackson won going away.",
+    },
+    {
+      year: '2020',
+      race: 'Oklahoma City',
+      text: 'Called in by the Oklahoma County GOP chair three days before the election, with the Republican down five in the congressional race. Pulled the data that night, built the program, and sent it county-wide. Republicans won up and down the ballot, and the congressional seat the consultants had written off flipped.',
+    },
+    {
+      year: '2022',
+      race: 'County commissioner',
+      text: 'A Potter County commissioner precinct that had been solidly Democrat for years went red.',
+    },
+    {
+      year: '2024',
+      race: 'Statewide judicial primary',
+      text: 'First full-database Texas email sent the week before the Court of Criminal Appeals vote, with a recorded interview with each challenger. All three unseated long-time incumbents.',
+    },
+    {
+      year: '2026',
+      race: 'County court runoff',
+      text: 'Same program, plus ringless voicemail, for a Randall County Court at Law candidate who came out of the primary more than twenty points behind. He won handily.',
+    },
+  ],
+  closing: aboutClosing,
+} as const
 
 export const quoteOptions = [
   'Text messaging',

@@ -18,6 +18,18 @@ export const siteConfig = {
   },
   links: {
     patriotsInAction: 'https://patriotsinaction.com/',
+    gopConnect: 'https://gopconnect.com',
+    myLocalGop: 'https://mylocalgop.com',
+    theCountyPost: 'https://thecountypost.com',
+    /** The Ballot Box is still in development; leave empty until it is live. */
+    theBallotBox: '',
+    /**
+     * Operation Show-Up ordering page. No Amazon listing was found for the
+     * book, so this points at the Patriots in Action shop product page used by
+     * patriotsforaction.org. Swap in the Amazon URL once it exists.
+     */
+    operationShowUp:
+      'https://shop.patriotsinaction.com/products/operation-show-up?variant=53583746826606',
     privacy: '/privacy',
     terms: '/terms',
   },

@@ -1,3 +1,4 @@
+import { Fragment } from 'react'
 import {
   ArrowRight,
   ChartNoAxesColumnIncreasing,
@@ -344,11 +345,37 @@ export function HomePage() {
             <h2 id="about-title">
               Run by the guy who moved a county 44 points
             </h2>
-            {aboutCopy.map((paragraph) => (
-              <p className="about-paragraph" key={paragraph}>
-                {paragraph}
-              </p>
-            ))}
+            <p className="about-paragraph">{aboutCopy.intro}</p>
+            <blockquote className="about-quote">
+              <p>&ldquo;{aboutCopy.pullQuote.text}&rdquo;</p>
+              <cite>&mdash; {aboutCopy.pullQuote.attribution}</cite>
+            </blockquote>
+            <ul className="about-record">
+              {aboutCopy.record.map((entry) => (
+                <li key={`${entry.year}-${entry.race}`}>
+                  <span className="about-record-year">{entry.year} &mdash;</span>
+                  <p>
+                    <strong>{entry.race}.</strong> {entry.text}
+                  </p>
+                </li>
+              ))}
+            </ul>
+            <p className="about-paragraph">
+              {aboutCopy.closing.map((segment, index) =>
+                segment.href ? (
+                  <a
+                    href={segment.href}
+                    key={index}
+                    rel="noopener noreferrer"
+                    target="_blank"
+                  >
+                    {segment.text}
+                  </a>
+                ) : (
+                  <Fragment key={index}>{segment.text}</Fragment>
+                ),
+              )}
+            </p>
           </div>
         </div>
       </section>
