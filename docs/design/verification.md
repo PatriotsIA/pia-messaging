@@ -40,3 +40,10 @@ The project uses the Patriot Messaging EmailJS account and its dedicated templat
 - Kept the first full-database email send at $35,000, changed two full waves to $50,000, and removed the separate second-send row.
 - Lint, production build, and all 22 browser checks passed. Header and email-card screenshots at 320, 390, 768, and 1280 pixels are in `coverage/about-update/`; there was no horizontal overflow or runtime error.
 - The existing About copy and links are unchanged in this release. The requested expanded campaign history and the proposed email-result statement are not included.
+
+## September 23 email pricing update
+
+- Replaced the email table rows with the supplied options: first full-database send at $35,000, an additional send for the same campaign at $20,000, and both waves booked together at $50,000.
+- Added the supplied Court of Criminal Appeals sentence beneath the first-send label. The newer About copy and artwork are preserved.
+- Lint, production build, and all 22 existing browser checks passed. Provider requests were intercepted during tests.
+- Browser review confirmed all three rows and prices at 320 and 1280 pixels, with no horizontal overflow or runtime errors. Review screenshots are in `coverage/email-pricing/` (ignored by Git).
