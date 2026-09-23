@@ -54,3 +54,10 @@ The project uses the Patriot Messaging EmailJS account and its dedicated templat
 - Added “6 million + Verified Voter Emails” beneath the first full-database send label, retaining its supplied explanatory sentence.
 - Added spaces around the em dash before “so the people writing” in the About paragraph.
 - Lint, production build, and all 22 existing browser checks passed. Review at 320 and 1280 pixels confirmed the four pricing rows and dash spacing, without horizontal overflow or runtime errors. Updated screenshots are in `coverage/email-pricing/` (ignored by Git).
+
+## September 23 studio photograph update
+
+- Replaced the About section's studio image with the newly supplied photograph. The 1600 × 1200 WebP preserves the full 4:3 composition and uses a new asset URL so returning visitors receive the replacement.
+- Updated the intrinsic dimensions, display aspect ratio, and description of the bison sculpture. The caption remains “Patriot Recording Studio.”
+- Lint, production build, and all eight existing image-loading and responsive-layout checks passed.
+- Browser review at 390 and 1280 pixels confirmed the new image loads, matches the local asset's SHA-256 hash, and preserves its aspect ratio, with no horizontal overflow or runtime errors. Screenshots are in `coverage/studio-update/` (ignored by Git).

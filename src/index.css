@@ -898,7 +898,7 @@ details[open] > summary svg {
   aspect-ratio: 1.97;
 }
 .about-figure-studio .reference-photo {
-  aspect-ratio: 1.29;
+  aspect-ratio: 4 / 3;
 }
 .about-grid figcaption {
   font-size: 12px;
