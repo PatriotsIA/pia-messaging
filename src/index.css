@@ -38,7 +38,7 @@
 }
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 110px;
+  scroll-padding-top: 150px;
 }
 body {
   margin: 0;
@@ -214,6 +214,21 @@ dd {
   flex-shrink: 0;
   display: block;
   padding-block: 5px;
+}
+.header-hours {
+  padding-block: 7px;
+  border-top: 1px solid #dbe2ea;
+  background: var(--tint);
+  color: var(--navy);
+  font-size: 13px;
+  line-height: 1.4;
+  text-align: center;
+}
+.header-hours span:first-child {
+  font-weight: 600;
+}
+.header-hours span {
+  display: inline-block;
 }
 .header-brand img {
   display: block;
@@ -915,6 +930,11 @@ details[open] > summary svg {
 .contact-copy address a:hover {
   text-decoration: underline;
 }
+.contact-hours {
+  margin-block: 5px 12px;
+  color: var(--muted);
+  font-size: 14px;
+}
 .quote-form {
   background: white;
   border-radius: 9px;
@@ -1260,7 +1280,7 @@ details[open] > summary svg {
 }
 @media (max-width: 760px) {
   html {
-    scroll-padding-top: 94px;
+    scroll-padding-top: 165px;
   }
   .site-container {
     width: calc(100% - 36px);

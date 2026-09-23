@@ -32,3 +32,11 @@ The project uses the Patriot Messaging EmailJS account and its dedicated templat
 - Lint, production build, and all 22 browser checks passed. EmailJS requests were intercepted; these checks do not send messages or verify inbox receipt.
 - Header and open-dropdown screenshots at 320, 390, 768, and 1280 pixels are in `coverage/contact-pricing/` (ignored by Git). No horizontal overflow or browser page errors were found.
 - Read `tracker-context pia --project pia-messaging` before editing and added the PIA tracker workflow to the README for future work.
+
+## September 22 hours, headline, and email package update
+
+- Added the supplied weekday hours and weekend call note near the header phone number and in the contact section. Increased anchor-scroll offsets for the taller header.
+- Changed the hero heading to “Reach voters where they are — on the phone in their pocket.”
+- Kept the first full-database email send at $35,000, changed two full waves to $50,000, and removed the separate second-send row.
+- Lint, production build, and all 22 browser checks passed. Header and email-card screenshots at 320, 390, 768, and 1280 pixels are in `coverage/about-update/`; there was no horizontal overflow or runtime error.
+- The existing About copy and links are unchanged in this release. The requested expanded campaign history and the proposed email-result statement are not included.

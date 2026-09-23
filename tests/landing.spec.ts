@@ -41,7 +41,7 @@ test('production HTML contains the complete page before JavaScript', async ({
 }) => {
   const response = await request.get('/')
   const html = await response.text()
-  expect(html).toContain('Reach every Texas voter')
+  expect(html).toContain('Reach voters where they are')
   expect(html).toContain('Hardeman County neighbors')
   expect(html).toContain('Outside Texas, the data charge applies')
   expect(html).toContain('dan@patriotmessaging.com')

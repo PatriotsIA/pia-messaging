@@ -81,6 +81,12 @@ export function NavBar() {
           {open ? <X /> : <Menu />}
         </button>
       </div>
+      <div className="header-hours">
+        <p className="site-container">
+          <span>{siteConfig.contact.hours}</span>{' '}
+          <span>{siteConfig.contact.weekendHours}</span>
+        </p>
+      </div>
       {open && (
         <nav
           className="mobile-nav"

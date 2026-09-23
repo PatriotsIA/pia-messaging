@@ -59,8 +59,8 @@ export function HomePage() {
               Texas roots. Nationwide reach.
             </p>
             <h1 id="hero-title">
-              Reach every Texas voter you need, <span>on the phone</span> in
-              their pocket.
+              Reach voters where they are — <span>on the phone</span> in their
+              pocket.
             </h1>
             <p className="hero-intro">{heroCopy.intro}</p>
             <div className="hero-actions">
@@ -212,12 +212,8 @@ export function HomePage() {
                     <td>$35,000</td>
                   </tr>
                   <tr>
-                    <th scope="row">Second send, same campaign</th>
-                    <td>$20,000</td>
-                  </tr>
-                  <tr>
                     <th scope="row">Two full waves</th>
-                    <td>$55,000</td>
+                    <td>$50,000</td>
                   </tr>
                   <tr>
                     <th scope="row">
@@ -375,6 +371,11 @@ export function HomePage() {
               <a href={`tel:${siteConfig.contact.phoneDial}`}>
                 {siteConfig.contact.phone}
               </a>
+              <span className="contact-hours">
+                {siteConfig.contact.hours}
+                <br />
+                {siteConfig.contact.weekendHours}
+              </span>
               <a href={`mailto:${siteConfig.contact.email}`}>
                 {siteConfig.contact.email}
               </a>

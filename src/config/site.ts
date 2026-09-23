@@ -12,6 +12,8 @@ export const siteConfig = {
     phone: '866-756-1776',
     /** E.164 for <a href="tel:..."> */
     phoneDial: '+18667561776',
+    hours: 'Mon–Fri, 7:30 am–7:30 pm Central.',
+    weekendHours: "Weekends, call anyway — someone's usually here.",
     mailingAddress: '1000 S. Jefferson Street, Amarillo, TX 79101',
   },
   links: {
