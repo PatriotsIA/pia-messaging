@@ -208,7 +208,7 @@ export function HomePage() {
                   <tr>
                     <th scope="row">
                       First full-database send
-                      <small>6 million + Verified Voter Emails</small>
+                      <small>8M+ addresses, 6M+ verified voter emails</small>
                       <small>
                         This is the send that carried the 2024 Court of Criminal Appeals challengers.
                       </small>

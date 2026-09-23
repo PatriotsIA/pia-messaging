@@ -25,7 +25,7 @@ The landing page contains Hero, Services, Pricing, Creative & digital, How it wo
 
 The header and contact section show a clickable **866-756-1776**. The quote form supports multiple products through a checkbox dropdown and includes every selected product in both direct submissions and email drafts. Digital ads are **$30 per 1,000 impressions**; ringless voicemail is **$0.08 per voicemail under 30 seconds, plus a $150 setup fee**, per the September 22 update.
 
-The header and contact section also show weekday hours of **7:30 am–7:30 pm Central** and the supplied weekend call note. Email broadcasting lists **$35,000 for the first full-database send**, **$20,000 to add a second send for the same campaign**, and **$50,000 for both waves booked together**. The first send includes the label “6 million + Verified Voter Emails.” Smaller universes cost **$0.01 per email**, plus a **one-time $0.01 per record data charge**. The hero headline reads “Reach voters where they are — on the phone in their pocket.”
+The header and contact section also show weekday hours of **7:30 am–7:30 pm Central** and the supplied weekend call note. Email broadcasting lists **$35,000 for the first full-database send**, **$20,000 to add a second send for the same campaign**, and **$50,000 for both waves booked together**. The first send includes the label “8M+ addresses, 6M+ verified voter emails.” Smaller universes cost **$0.01 per email**, plus a **one-time $0.01 per record data charge**. The hero headline reads “Reach voters where they are — on the phone in their pocket.”
 
 - `src/config/content.ts`: approved marketing copy and rates.
 - `src/pages/HomePage.tsx`: page composition.
